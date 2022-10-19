@@ -13,6 +13,7 @@
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "lint": "eslint . --fix",
+    "typecheck": "vue-tsc --noEmit --skipLibCheck",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -24,6 +25,7 @@
     "@vitejs/plugin-vue": "^3.1.0",
     "commitizen": "^4.2.5",
     "cz-conventional-changelog": "^3.3.0",
+    "cz-customizable": "^7.0.0",
     "eslint": "^8.25.0",
     "eslint-config-soybeanjs-vue": "^0.1.0",
     "husky": "^8.0.1",
@@ -36,7 +38,7 @@
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+      "path": "./node_modules/cz-customizable"
     }
   }
 }
