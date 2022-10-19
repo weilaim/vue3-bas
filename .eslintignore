@@ -1,0 +1,8 @@
+.vscode
+README.md
+.idea
+.local
+!.env-config.ts
+components.d.ts
+src-tauri/target
+src/vite-env.d.ts
