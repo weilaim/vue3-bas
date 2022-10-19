@@ -4,6 +4,7 @@ module.exports = {
     'import/core-modules': ['uno.css', '~icons/*', 'virtual:svg-icons-register']
   },
   rules: {
+    'prettier/prettier': 'warn',
     'import/order': [
       'error',
       {
