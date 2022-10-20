@@ -6,3 +6,10 @@ README.md
 components.d.ts
 src-tauri/target
 src/vite-env.d.ts
+
+/docs
+/dist/
+/mock/
+/public
+
+
