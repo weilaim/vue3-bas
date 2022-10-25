@@ -16,6 +16,7 @@ import compress from './compress';
  */
 export function setupVitePlugins(viteEnv: ImportMetaEnv): (PluginOption | PluginOption[])[] {
   const plugins = [vue(), vueJsx(), VitePWA(), html(viteEnv), ...unplugin(viteEnv), unocss(), mock, progress()];
+  // const plugins = [vue(), vueJsx(), VitePWA(), html(viteEnv), unocss(), mock, progress()];
 
   if (viteEnv.VITE_VISUALIZER === 'Y') {
     plugins.push(visualizer as PluginOption);
