@@ -12,6 +12,7 @@ specifiers:
   '@vitejs/plugin-vue-jsx': ^2.0.1
   commitizen: ^4.2.5
   cross-env: ^7.0.3
+  crypto-js: ^4.1.1
   cz-conventional-changelog: ^3.3.0
   cz-customizable: ^7.0.0
   dayjs: ^1.11.5
@@ -37,14 +38,17 @@ specifiers:
   vite-plugin-pwa: ^0.13.1
   vite-plugin-svg-icons: ^2.0.1
   vue: ^3.2.37
+  vue-router: ^4.1.5
   vue-tsc: ^0.40.4
 
 dependencies:
+  crypto-js: 4.1.1
   dayjs: 1.11.5
   lodash-es: 4.17.21
   pinia: 2.0.23_l7r24p6nevbtlimqmqcwa3ouhu
   swiper: 8.4.4
   vue: 3.2.41
+  vue-router: 4.1.6_vue@3.2.41
 
 devDependencies:
   '@commitlint/cli': 17.1.2
@@ -3077,6 +3081,10 @@ packages:
       shebang-command: 2.0.0
       which: 2.0.2
     dev: true
+
+  /crypto-js/4.1.1:
+    resolution: {integrity: sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==}
+    dev: false
 
   /crypto-random-string/2.0.0:
     resolution: {integrity: sha512-v1plID3y9r/lPhviJ1wrXpLeyUIGAZ2SHNYTEapm7/8A9nLPoyvVp3RK/EPFqn5kEznyWgYZNsRtYYIWbuG8KA==}
@@ -8431,6 +8439,15 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /vue-router/4.1.6_vue@3.2.41:
+    resolution: {integrity: sha512-DYWYwsG6xNPmLq/FmZn8Ip+qrhFEzA14EI12MsMgVxvHFDYvlr4NXpVF5hrRH1wVcDP8fGi5F4rxuJSl8/r+EQ==}
+    peerDependencies:
+      vue: ^3.2.0
+    dependencies:
+      '@vue/devtools-api': 6.4.5
+      vue: 3.2.41
+    dev: false
 
   /vue-tsc/0.40.13_typescript@4.8.4:
     resolution: {integrity: sha512-xzuN3g5PnKfJcNrLv4+mAjteMd5wLm5fRhW0034OfNJZY4WhB07vhngea/XeGn7wNYt16r7syonzvW/54dcNiA==}

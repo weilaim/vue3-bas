@@ -5,7 +5,7 @@
 
 <template>
   <div>
-    <h1>我是测试咧</h1>
+    <h1 class="bg-red font-italic mt-10">我是测试咧</h1>
     <div>
       <h2>ads</h2>
     </div>
