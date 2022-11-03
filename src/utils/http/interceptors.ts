@@ -62,14 +62,15 @@ export function resReject(error: AxiosError) {
     window.$message?.error(message);
     return Promise.reject(new AxiosRejectError({ code, message, data: error }));
   }
-  const { data, status, config } = error.response;
+  // const { data, status, config } = error.response;
+  const { data, status } = error.response;
   let { code, message } = data as AxiosRejectError;
   code = code ?? status;
   message = message ?? error.message;
   message = resolveResError(code, message);
   /** 错误需要提醒 */
-  const { noNeedTip } = config as RequestConfig;
+  // const { noNeedTip } = config as RequestConfig;
   // eslint-disable-next-line no-unused-expressions
-  !noNeedTip && window.$message?.error(error);
+  // !noNeedTip && window.$message?.error(error);
   return Promise.reject(new AxiosRejectError({ code, message, data: error.response }));
 }
