@@ -31,7 +31,7 @@ export function getLocal<T>(key: string) {
     let storageData: StorageData | null = null;
     try {
       storageData = decrypto(json);
-    } catch {}
+    } catch (error) {}
     if (storageData) {
       const { value, expire } = storageData;
       /** 没有过期时间或者有效期内则直接返回 */
@@ -56,7 +56,7 @@ export function getLocalExpire(key: string): number | null {
     let storageData: StorageData | null = null;
     try {
       storageData = decrypto(json);
-    } catch {}
+    } catch (error) {}
     if (storageData) {
       const { expire } = storageData;
       return expire;

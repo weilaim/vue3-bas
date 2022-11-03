@@ -1,4 +1,5 @@
-import { getLocal, removeLocal, setLocal } from '@/utils';
+import { getLocal, getLocalExpire, removeLocal, setLocal } from '@/utils';
+import api from '@/api';
 // token code
 const TOKEN_CODE = 'access_token';
 
@@ -17,7 +18,7 @@ export function getToken() {
  * 设置token
  * @param token string
  */
-export function setToke(token: string) {
+export function setToken(token: string) {
   setLocal(TOKEN_CODE, token, DURATION);
 }
 
@@ -28,13 +29,13 @@ export function removeToken() {
   removeLocal(TOKEN_CODE);
 }
 
-// export async function refreshAccessToken() {
-//   const expire: number | null = getLocalExpire(TOKEN_CODE);
-//   /** token 没有过期时间或者token离过期时间超过30分钟则不执行刷新 */
-//   if (!expire || expire - new Date().getTime() > 1000 * 60 * 30) return;
+export async function refreshAccessToken() {
+  const expire: number | null = getLocalExpire(TOKEN_CODE);
+  /** token 没有过期时间或者token离过期时间超过30分钟则不执行刷新 */
+  if (!expire || expire - new Date().getTime() > 1000 * 60 * 30) return;
 
-//   // try {
-//   //   // TO这里预留api刷新的T;
-//   //   // const res :any = await ap
-//   // } catch {} // 无感刷新，有异常也不提示}
-// }
+  try {
+    const res: any = await api.refreshToken();
+    if (res.code === 0) setToken(res.data.token);
+  } catch {} // 无感刷新，有异常也不提示}
+}

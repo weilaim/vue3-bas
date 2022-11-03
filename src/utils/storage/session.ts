@@ -21,7 +21,7 @@ export function getSession<T>(key: string) {
   if (json) {
     try {
       data = decrypto(json);
-    } catch {}
+    } catch (error) {}
   }
   return data;
 }
