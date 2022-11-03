@@ -27,8 +27,7 @@ export async function addDynamicRoutes() {
   // if (isNullOrWhitespace(token)) {
   //   router.addRoute(EMPTY_ROUTE);
   // }
-  console.log('专业测试');
-
+  // console.log('专业测试');
   // 有token的情况
   // try {
   //   const userStore = useUserStore();
