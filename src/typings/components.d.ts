@@ -7,6 +7,8 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    AppFooter: typeof import('./../components/common/AppFooter.vue')['default']
+    AppPage: typeof import('./../components/page/AppPage.vue')['default']
     AppProvider: typeof import('./../components/common/AppProvider.vue')['default']
     HelloWorld: typeof import('./../components/HelloWorld.vue')['default']
     NButton: typeof import('naive-ui')['NButton']
