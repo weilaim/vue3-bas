@@ -8,7 +8,7 @@
     "jsx": "preserve",
     "sourceMap": true,
     "paths": {
-      "~/*": ["./"],
+      "~/*": ["./*"],
       "@/*": ["./src/*"]
     },
     "types": ["vite/client", "node", "unplugin-icons/types/vue"],

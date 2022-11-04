@@ -2,6 +2,7 @@ import VueMacros from 'unplugin-vue-macros/vite';
 import Icons from 'unplugin-icons/vite';
 import IconsResolver from 'unplugin-icons/resolver';
 import Components from 'unplugin-vue-components/vite';
+import AutoImport from 'unplugin-auto-import/vite';
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
 import { FileSystemIconLoader } from 'unplugin-icons/loaders';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
@@ -18,6 +19,14 @@ export default function unplugin(viteEnv: ImportMetaEnv) {
 
   return [
     VueMacros(),
+    AutoImport({
+      imports: [
+        'vue',
+        {
+          'naive-ui': ['useDialog', 'useMessage', 'useNotification', 'useLoadingBar']
+        }
+      ]
+    }),
     Icons({
       compiler: 'vue3',
       customCollections: {
