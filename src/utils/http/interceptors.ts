@@ -42,11 +42,12 @@ export function resResolve(response: AxiosResponse) {
   // eslint-disable-next-line no-warning-comments
   // TODO 处理不同的 response.headers
   const { data, status, config, statusText } = response;
-  if (data?.code !== 0) {
+  if (data?.code !== 200) {
     const code = data?.code ?? status;
     /** 根据code处理对应的操作，并返回处理后的message */
     const message = resolveResError(code, data?.message ?? statusText);
     const { noNeedTip } = config as RequestConfig;
+
     // eslint-disable-next-line no-unused-expressions
     !noNeedTip && window.$message?.error(message);
     return Promise.reject(new AxiosRejectError({ code, message, data: data || response }));
@@ -54,6 +55,11 @@ export function resResolve(response: AxiosResponse) {
   return Promise.resolve(data);
 }
 
+/**
+ * 响应错误拦截
+ * @param error
+ * @returns
+ */
 export function resReject(error: AxiosError) {
   if (!error || !error.response) {
     const code = error?.code;
@@ -63,14 +69,14 @@ export function resReject(error: AxiosError) {
     return Promise.reject(new AxiosRejectError({ code, message, data: error }));
   }
   // const { data, status, config } = error.response;
-  const { data, status } = error.response;
+  const { data, status, config } = error.response;
   let { code, message } = data as AxiosRejectError;
   code = code ?? status;
   message = message ?? error.message;
   message = resolveResError(code, message);
   /** 错误需要提醒 */
-  // const { noNeedTip } = config as RequestConfig;
+  const { noNeedTip } = config as RequestConfig;
   // eslint-disable-next-line no-unused-expressions
-  // !noNeedTip && window.$message?.error(error);
-  return Promise.reject(new AxiosRejectError({ code, message, data: error.response }));
+  !noNeedTip && window.$message?.error(message);
+  return Promise.reject(new AxiosRejectError({ code, message, data: error.response?.data || error.response }));
 }

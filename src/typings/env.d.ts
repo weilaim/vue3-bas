@@ -27,6 +27,8 @@ interface ImportMetaEnv {
   readonly VITE_APP_TITLE: string;
   /** 项目描述 */
   readonly VITE_APP_DESC: string;
+  /** 是否开启mock */
+  readonly VITE_USE_MOCk?: 'Y' | 'N';
   /**
    * 权限路由模式:
    * - static - 前端声明的静态

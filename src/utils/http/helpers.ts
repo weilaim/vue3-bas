@@ -1,4 +1,10 @@
+// import { useAuthStore } from '@/store;
 import type { ErrorResolveResponse } from '@/typings/axios';
+// import { AxiosRequestConfig } from 'axios';
+
+// export async function handleRefreshToken(axiosConfig:AxiosRequestConfig) {
+// const {resetAuthStore } = useAuthStore()
+// }
 
 export class AxiosRejectError extends Error {
   code?: number | string;

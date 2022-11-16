@@ -1,8 +1,8 @@
 <script setup lang="ts"></script>
 <template>
-  <footer text-14 f-c-c flex-col color="#6a6a6a">
-    <p>Copyright©2022</p>
+  <footer f-c-c flex-col color="#6a6a6a">
     <p>
+      Copyright©2022
       <a href="" target="__blank" hover="decoration-underline color-primary">Weilaim</a>
     </p>
     <p>

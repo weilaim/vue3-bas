@@ -1,9 +1,11 @@
 import { viteMockServe } from 'vite-plugin-mock';
 
-export default viteMockServe({
-  mockPath: 'mock',
-  injectCode: `
-		import { setupMockServer } from '../mock';
+export default function setupMockPlugin() {
+  return viteMockServe({
+    mockPath: 'mock/api',
+    injectCode: `
+		import { setupMockServer } from './mock';
 		setupMockServer();
 	`
-});
+  });
+}

@@ -1,5 +1,5 @@
 import type { Router } from 'vue-router';
-import { getToken, isNullOrWhitespace, refreshAccessToken } from '@/utils';
+import { getToken, isNullOrWhitespace } from '@/utils';
 const WHITE_LIST = ['/login'];
 export function createPermissionGuard(router: Router) {
   router.beforeEach(async to => {
@@ -11,7 +11,7 @@ export function createPermissionGuard(router: Router) {
     }
     /** 有token的情况 */
     if (to.path === '/login') return { path: '/' };
-    refreshAccessToken();
+    // refreshAccessToken();
     return true;
   });
 }

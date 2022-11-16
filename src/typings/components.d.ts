@@ -11,7 +11,11 @@ declare module '@vue/runtime-core' {
     AppPage: typeof import('./../components/page/AppPage.vue')['default']
     AppProvider: typeof import('./../components/common/AppProvider.vue')['default']
     HelloWorld: typeof import('./../components/HelloWorld.vue')['default']
+    IconLocalLogo: typeof import('~icons/local/logo')['default']
+    NButono: typeof import('naive-ui')['NButono']
     NButton: typeof import('naive-ui')['NButton']
+    NCheckbox: typeof import('naive-ui')['NCheckbox']
+    NInput: typeof import('naive-ui')['NInput']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
