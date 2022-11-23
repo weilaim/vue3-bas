@@ -1,7 +1,6 @@
 import { defineStore } from 'pinia';
 import type { GlobalThemeOverrides } from 'naive-ui';
 import { darkTheme } from 'naive-ui';
-import type { Theme } from '@unocss/preset-uno';
 import type { BuiltInGlobalTheme } from 'naive-ui/es/themes/interface';
 import { initThemeSettings, getNaiveThemeOverrides } from './helpers';
 

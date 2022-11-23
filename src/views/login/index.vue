@@ -37,9 +37,7 @@ async function handleLogin() {
     } else {
       removeLocal('loginInfo');
     }
-  } catch (error) {
-    console.log('error', error);
-  }
+  } catch (error) {}
 }
 </script>
 <template>
