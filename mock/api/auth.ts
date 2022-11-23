@@ -61,7 +61,6 @@ const apis:MockMethod[] = [
       // 这里的mock插件得到的字段是authorization，前端传递的是Authorization字段
       const {authorization = ''} = options.headers
       const REFRESH_TOKEN_CODE = 66666;
-      console.log('authorization from mock auth',authorization);
       
       if(!authorization){
         return {

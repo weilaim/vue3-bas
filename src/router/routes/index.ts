@@ -36,6 +36,15 @@ export const basicRoutes: RoutesType = [
           title: '源码-github',
           icon: 'mdi:github'
         }
+      },
+      {
+        name: 'linkMiniarf',
+        path: 'https://mini.arf-to.cn',
+        component: () => {},
+        meta: {
+          title: 'arf-to站点',
+          icon: 'simple-icons:gatling'
+        }
       }
     ]
   }

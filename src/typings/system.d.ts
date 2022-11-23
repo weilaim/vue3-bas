@@ -82,3 +82,13 @@ declare namespace Service {
     headers: Record<string, any>;
   }
 }
+
+/** 菜单项配置 */
+type GlobalMenuOpiton = import('naive-ui').MenuOption & {
+  key: string;
+  label: string;
+  path: string;
+  icon?: () => import('vue').VNodeChild;
+  order: number;
+  children?: GlobalMenuOpiton[];
+};
