@@ -19,5 +19,7 @@ declare namespace Auth {
     userName: string;
     /** 用户角色类型 */
     userRole: RoleTyep;
+    /** 头像 */
+    avatar: string;
   }
 }

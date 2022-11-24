@@ -1,33 +1,22 @@
 import { defineStore } from 'pinia';
-import { resetRouter } from '@/router';
-import { removeToken, toLogin } from '@/utils';
+import { getUserInfo, removeToken, toLogin } from '@/utils';
+// import { useRouterPush } from '~/src/composables';
 import { useTabStore } from '../tab';
-import { usePermissionStore } from './../permission/index';
-interface UserInfo {
-  id?: string;
-  name?: string;
-  avatar?: string;
-  role?: Array<string>;
+interface UserState {
+  /** 用户信息 */
+  userInfo: Auth.UserInfo;
 }
 
 export const useUserStore = defineStore('user', {
-  state() {
-    return {
-      userInfo: <UserInfo>{}
-    };
-  },
+  state: (): UserState => ({
+    userInfo: getUserInfo()
+  }),
   getters: {
     userId(): string {
-      return this.userInfo.id || '';
+      return this.userInfo.userId;
     },
-    name(): string {
-      return this.userInfo.name || '';
-    },
-    avatar(): string {
-      return this.userInfo.avatar || '';
-    },
-    role(): Array<string> {
-      return this.userInfo.role || [];
+    role(): Auth.RoleTyep {
+      return this.userInfo.userRole;
     }
   },
   actions: {
@@ -36,11 +25,8 @@ export const useUserStore = defineStore('user', {
      */
     logout() {
       const { resetTabs } = useTabStore();
-      const { resetPermission } = usePermissionStore();
       removeToken();
-      resetPermission();
       resetTabs();
-      resetRouter();
       this.$reset();
       toLogin();
     }

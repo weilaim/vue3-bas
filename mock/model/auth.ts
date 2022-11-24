@@ -11,7 +11,8 @@ export const userModel:UserModel[]=[
     userId:'0',
     userName:'weilaim',
     userRole:'super',
-    password:'weilaim123'
+    password:'weilaim123',
+    avatar:'https://miniwx.arf-to.cn/334050.jpg'
   },
   {
     token:'__TOKEN_SOYBEAN__',
@@ -19,7 +20,8 @@ export const userModel:UserModel[]=[
     userId:'1',
     userName:'小米',
     userRole:'admin',
-    password:'weilaim123'
+    password:'weilaim123',
+    avatar:'https://miniwx.arf-to.cn/334050.jpg'
   },
   {
     token:'__TOKEN_SOYBEAN__',
@@ -27,7 +29,9 @@ export const userModel:UserModel[]=[
     userId:'2',
     userName:'小米',
     userRole:'admin',
-    password:'weilaim123'
+    password:'weilaim123',
+    avatar:'https://miniwx.arf-to.cn/334050.jpg'
+
   },
   {
     token:'__TOKEN_SOYBEAN__',
@@ -35,7 +39,8 @@ export const userModel:UserModel[]=[
     userId:'3',
     userName:'admin',
     userRole:'user',
-    password:'admin'
+    password:'admin',
+    avatar:'https://miniwx.arf-to.cn/334050.jpg'
   },
 
 ]

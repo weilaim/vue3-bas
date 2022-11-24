@@ -1,8 +1,10 @@
 import { defineStore } from 'pinia';
-// import { router } from '@/router';
+import { addDynamicRoutes, resetRouter } from '@/router';
 import { useRouterPush } from '@/composables';
-import { getToken, getUserInfo, setRefreshToken, setToken, setUserInfo } from '@/utils';
+import { clearAuthStorage, getToken, getUserInfo, setRefreshToken, setToken, setUserInfo, toLogin } from '@/utils';
 import { fetchLogin, fetchUserInfo } from '@/api';
+import { useTabStore } from '../tab';
+import { usePermissionStore } from '../permission';
 interface AuthState {
   /** 用户信息 */
   userInfo: Auth.UserInfo;
@@ -22,13 +24,27 @@ export const useAuthStore = defineStore('auth-store', {
     /** 是否登录 */
     isLogin(state) {
       return Boolean(state.token);
+    },
+    avatar(): string {
+      return this.userInfo.avatar || 'https://miniwx.arf-to.cn/334050.jpg';
+    },
+    name(): string {
+      return this.userInfo.userName || 'weilaim';
     }
   },
   actions: {
     /** 重置状态 */
     resetAuthStore() {
-      // const {toLogin} = useRouterPush(false)
-      // const { resetT}
+      // const { toLogin } = useRouterPush(false);
+      // const {resetTabStore}
+      // const {resetRouteStore} =
+      // const route = unref(router.currentRoute);
+      // clearAuthStorage();
+      // this.$reset();
+      // console.log('route', route.meta.requiresAuth);
+      // if (route.meta.requiresAuth) {
+      //   toLogin();
+      // }
       // const route = unref(router.currentRoute)
       // if(route.meta.requ)
     },
@@ -54,6 +70,8 @@ export const useAuthStore = defineStore('auth-store', {
       const { toLoginRedirect } = useRouterPush(false);
       const loginSuccess = await this.loginByToken(backendToken);
       if (loginSuccess) {
+        // 登录成功需要添加动态路由
+        await addDynamicRoutes();
         // 跳转登录后的地址
         toLoginRedirect();
 
@@ -91,6 +109,17 @@ export const useAuthStore = defineStore('auth-store', {
         successFlag = true;
       }
       return successFlag;
+    },
+
+    async logout() {
+      const { resetTabs } = useTabStore();
+      const { resetPermission } = usePermissionStore();
+      clearAuthStorage();
+      resetPermission();
+      resetTabs();
+      this.$reset();
+      resetRouter();
+      toLogin();
     }
   }
 });
