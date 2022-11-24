@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router';
-import type { Meta } from '~/src/typings/router';
-import { renderIcon, renderLocalIcon } from '~/src/utils';
+import { renderIcon, renderLocalIcon } from '@/utils';
+import type { Meta } from '@/typings/router';
 
 const router = useRouter();
 const route = useRoute();

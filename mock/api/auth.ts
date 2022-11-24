@@ -73,6 +73,7 @@ const apis:MockMethod[] = [
         userId:'',
         userName:'',
         userRole:'user',
+        avatar:''
       };
       const isInUser = userModel.some(item => {
         const flag = item.token === authorization;
