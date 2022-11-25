@@ -12,6 +12,8 @@ declare module '@vue/runtime-core' {
     AppProvider: typeof import('./../components/common/AppProvider.vue')['default']
     'IconAntDesign:fullscreenExitOutlined': typeof import('~icons/ant-design/fullscreen-exit-outlined')['default']
     'IconAntDesign:fullscreenOutlined': typeof import('~icons/ant-design/fullscreen-outlined')['default']
+    'IconIc:baselineKeyboardArrowLeft': typeof import('~icons/ic/baseline-keyboard-arrow-left')['default']
+    'IconIc:baselineKeyboardArrowRight': typeof import('~icons/ic/baseline-keyboard-arrow-right')['default']
     IconLocalLogo: typeof import('~icons/local/logo')['default']
     'IconMdi:formatIndentDecrease': typeof import('~icons/mdi/format-indent-decrease')['default']
     'IconMdi:formatIndentIncrease': typeof import('~icons/mdi/format-indent-increase')['default']
@@ -29,8 +31,10 @@ declare module '@vue/runtime-core' {
     NLayout: typeof import('naive-ui')['NLayout']
     NLayoutSider: typeof import('naive-ui')['NLayoutSider']
     NMenu: typeof import('naive-ui')['NMenu']
+    NTag: typeof import('naive-ui')['NTag']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    ScrollX: typeof import('./../components/common/ScrollX.vue')['default']
     SvgIcon: typeof import('./../components/custom/SvgIcon.vue')['default']
   }
 }
