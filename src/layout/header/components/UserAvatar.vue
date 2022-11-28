@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useAuthStore } from '~/src/store';
-import { renderIcon } from '~/src/utils';
+import { useAuthStore } from '@/store';
+import { renderIcon } from '@/utils';
 const userStore = useAuthStore();
 const options = [
   {

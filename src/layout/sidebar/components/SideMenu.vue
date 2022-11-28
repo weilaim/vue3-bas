@@ -46,7 +46,7 @@ const handleMenuSelect = (_key: string, item: GlobalMenuOpiton) => {
     @update:value="handleMenuSelect"
   />
 </template>
-<style lang="scss" scoped>
+<style lang="scss">
 .side-menu:not(.n-menu--collapsed) {
   .n-menu-item-content {
     &::before {

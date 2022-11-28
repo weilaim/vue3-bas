@@ -15,6 +15,12 @@ export const useUserStore = defineStore('user', {
     userId(): string {
       return this.userInfo.userId;
     },
+    name(): string {
+      return this.userInfo.userName;
+    },
+    avatar(): string {
+      return this.userInfo.avatar || 'https://miniwx.arf-to.cn/334050.jpg';
+    },
     role(): Auth.RoleTyep {
       return this.userInfo.userRole;
     }
