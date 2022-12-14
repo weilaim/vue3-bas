@@ -1,7 +1,7 @@
 <template>
-  <div class="">
-    <h1>测试</h1>
-  </div>
+  <CommonPage :show-footer="true">
+    <div>asd</div>
+  </CommonPage>
 </template>
 
 <script setup lang="ts"></script>

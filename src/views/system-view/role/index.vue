@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 <template>
-  <CommonPage>
-    <div>animation</div>
+  <CommonPage :show-footer="true">
+    <div>role角色管理</div>
   </CommonPage>
 </template>
 <style lang="scss" scoped></style>

@@ -1,7 +1,5 @@
 <script setup lang="ts"></script>
 <template>
-  <CommonPage>
-    <div>animation</div>
-  </CommonPage>
+  <CommonPage :show-footer="true">权限</CommonPage>
 </template>
 <style lang="scss" scoped></style>
