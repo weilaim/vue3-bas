@@ -11,8 +11,7 @@ export default {
     title: '实例页面',
     customIcon: 'logo',
     role: ['admin'],
-    order: 1,
-    requireAuth: true
+    order: 1
   },
   children: [
     {
