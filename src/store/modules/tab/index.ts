@@ -1,22 +1,47 @@
+import type { Router } from 'vue-router';
 import { defineStore } from 'pinia';
-import { router } from '@/router';
 import { setSession } from '@/utils';
-import { activeTab, tabs, WITHOUT_TAB_PATHS } from './helpers';
+import { WITHOUT_TAB_PATHS } from './helpers';
 
 export interface TabItem {
-  name: string;
-  path: string;
-  title?: string;
+  /** 多标签数据 */
+  tabs: GlobalTabRoute[];
+  /** 多标签首页 */
+  homeTab: GlobalTabRoute;
+  /** 当前激活状态的标签页(路由fullPath) */
+  activeTab: string;
 }
 
-export const useTabStore = defineStore('tab', {
-  state() {
-    return {
-      tabs: <Array<TabItem>>tabs || [],
-      activeTab: <string>activeTab || ''
-    };
-  },
+export const useTabStore = defineStore('tab-store', {
+  state: (): TabItem => ({
+    tabs: [],
+    homeTab: {
+      name: 'root',
+      fullPath: '/',
+      meta: {
+        title: 'Root'
+      },
+      scrollPosition: {
+        left: 0,
+        top: 0
+      }
+    },
+    activeTab: ''
+  }),
   actions: {
+    /**
+     * 初始化首页页签路由
+     * @param routeHomeName 路由name
+     * @param router 路由实例
+     */
+    initHomeTab(routeHomeName: string, router: Router) {
+      const routes = router.getRoutes();
+      const findHome = routes.find(item => item.name === routeHomeName);
+      if (findHome && !findHome.children.length) {
+        // 有子路由的不能作为Tab
+        this.homeTab = getTabRouteByVueRoute(findHome);
+      }
+    },
     setActiveTab(path: string) {
       this.activeTab = path;
       setSession('activeeTab', path);

@@ -1,52 +1,114 @@
+import { getLoginModuleRegExp } from '@/utils';
 import type { RouteType, RoutesType, RouteModule } from '@/typings/router';
 
-const Layout = () => import('@/layout/index.vue');
+/** 根路由 */
+export const ROOT_ROUTE: AuthRoute.Route = {
+  name: 'root',
+  path: '/',
+  redirect: import.meta.env.VITE_ROUTE_HOME_PATH,
+  meta: {
+    title: 'Root'
+  }
+};
 
-export const basicRoutes: RoutesType = [
+// 固定的路由
+export const constantRoutes: AuthRoute.Route[] = [
+  ROOT_ROUTE,
+  // {
+  //   name: 'dashboard',
+  //   path: '/dashboard',
+  //   component: 'basic',
+  //   children: [
+  //     {
+  //       name: 'dashboard_analysis',
+  //       path: '/dashboard/analysis',
+  //       component: 'self',
+  //       meta: {
+  //         title: '分析页',
+  //         requiresAuth: true,
+  //         icon: 'icon-park-outline:analysis'
+  //       }
+  //     },
+  //     {
+  //       name: 'dashboard_workbench',
+  //       path: '/dashboard/workbench',
+  //       component: 'self',
+  //       meta: {
+  //         title: '工作台',
+  //         requiresAuth: true,
+  //         icon: 'icon-park-outline:workbench'
+  //       }
+  //     }
+  //   ],
+  //   meta: {
+  //     title: '仪表盘',
+  //     icon: 'mdi:monitor-dashboard',
+  //     order: 1
+  //   }
+  // },
   {
-    name: '404',
-    path: '/404',
-    component: () => import('@/views/error/404.vue'),
-    isHidden: true
-  },
-  {
-    name: 'Login',
+    name: 'login',
     path: '/login',
-    component: () => import('@/views/login/index.vue'),
-    isHidden: true,
+    component: 'self',
+    props: route => {
+      const moduleType = (route.params.module as EnumType.LoginModuleKey) || 'pwd-login';
+      return {
+        module: moduleType
+      };
+    },
     meta: {
-      title: '登录页'
+      title: '登录',
+      dynamicPath: `/login/:module(${getLoginModuleRegExp()})?`,
+      singleLayout: 'blank'
     }
   },
   {
-    name: 'ExternalLink',
-    path: '/external-link',
-    component: Layout,
+    name: 'constant-page',
+    path: '/constant-page',
+    component: 'self',
     meta: {
-      title: '外部连接',
+      title: '固定页面',
       icon: 'mdi:link-variant',
-      order: 3
-    },
-    children: [
-      {
-        name: 'linkGithubSrc',
-        path: 'https://github.com/zclzone/qs-admin',
-        component: () => {},
-        meta: {
-          title: '源码-github',
-          icon: 'mdi:github'
-        }
-      },
-      {
-        name: 'linkMiniarf',
-        path: 'https://mini.arf-to.cn',
-        component: () => {},
-        meta: {
-          title: 'arf-to站点',
-          icon: 'simple-icons:gatling'
-        }
-      }
-    ]
+      order: 3,
+      singleLayout: 'blank'
+    }
+  },
+  {
+    name: 'no-permission',
+    path: '/no-permission',
+    component: 'self',
+    meta: {
+      title: '无权限',
+      singleLayout: 'blank'
+    }
+  },
+  {
+    name: 'not-found',
+    path: '/not-found',
+    component: 'self',
+    meta: {
+      title: '未找到',
+      singleLayout: 'blank'
+    }
+  },
+  {
+    name: 'service-error',
+    path: '/service-error',
+    component: 'self',
+    meta: {
+      title: '服务器错误',
+      singleLayout: 'blank'
+    }
+  },
+  // 匹配无效路径的路由
+  {
+    name: 'not-found-page',
+    path: '/:pathMatch(.*)*',
+    component: 'blank',
+    meta: {
+      title: '未找到',
+      singleLayout: 'blank'
+    }
   }
 ];
 

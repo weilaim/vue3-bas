@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useAuthStore } from '@/store';
 import { renderIcon } from '@/utils';
-const userStore = useAuthStore();
+const userAuthStore = useAuthStore();
 const options = [
   {
     label: '退出登录',
@@ -18,7 +18,7 @@ const handleSelect = (key: string) => {
       positiveText: '确定',
       negativeText: '取消',
       onPositiveClick() {
-        userStore.logout();
+        userAuthStore.resetAuthStore();
         window.$message?.success('已退出登录!');
       }
     });
@@ -28,8 +28,8 @@ const handleSelect = (key: string) => {
 <template>
   <n-dropdown :options="options" @select="handleSelect">
     <div flex items-center cursor-pointer>
-      <img :src="userStore.avatar" mr-10 w-35 h-35 rounded-full />
-      <span>{{ userStore.name }}</span>
+      <img :src="userAuthStore.avatar" mr-10 w-35 h-35 rounded-full />
+      <span>{{ userAuthStore.name }}</span>
     </div>
   </n-dropdown>
 </template>

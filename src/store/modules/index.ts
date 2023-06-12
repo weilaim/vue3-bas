@@ -5,5 +5,5 @@ export * from './theme';
 export * from './permission';
 // export * from './auth';
 export * from './tab';
-// export * from './route';
+export * from './router';
 // export * from './setup-store';

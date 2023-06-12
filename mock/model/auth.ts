@@ -2,13 +2,14 @@ interface UserModel extends Auth.UserInfo {
   token:string
   refreshToken:string
   password:string
+  avatar:string
 }
 
 export const userModel:UserModel[]=[
   {
     token:'__TOKEN_SOYBEAN__',
     refreshToken:'__REFRESH_TOKEN_SOYBEAN__',
-    userId:'0',
+    id:'1',
     userName:'weilaim',
     userRole:'super',
     password:'weilaim123',

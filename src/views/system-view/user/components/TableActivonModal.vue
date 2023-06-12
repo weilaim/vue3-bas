@@ -4,7 +4,7 @@ import { formRules, createRequiredFormRule } from '@/utils';
 import { genderOptions, userStatusOptions } from '@/constants';
 
 export interface Props {
-  /** 弹窗可见就性 */
+  /** 弹窗可见性 */
   visible: boolean;
   /**
    * 弹窗类型

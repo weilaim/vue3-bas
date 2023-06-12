@@ -1,5 +1,5 @@
 export * from './crypto';
-// export * from './is';
+export * from './theme';
 export * from './color';
 export * from './typeof';
 export * from './icon';

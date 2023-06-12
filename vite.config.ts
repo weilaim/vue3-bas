@@ -29,6 +29,7 @@ export default defineConfig(configEnv => {
     },
     server: {
       host: '0.0.0.0',
+      port: 5174,
       open: true,
       proxy: createViteProxy(isOpenProxy, envConfig)
     },

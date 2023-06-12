@@ -19,7 +19,6 @@ function setTableData(data: UserManagement.User[]) {
 async function getTableData() {
   startLoading();
   const { data } = await fetchUserList();
-  console.log('data', data);
   if (data) {
     setTimeout(() => {
       setTableData(data);

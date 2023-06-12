@@ -1,10 +1,11 @@
 import { defineStore } from 'pinia';
-import { addDynamicRoutes, resetRouter } from '@/router';
+import { router } from '@/router';
 import { useRouterPush } from '@/composables';
-import { clearAuthStorage, getToken, getUserInfo, setRefreshToken, setToken, setUserInfo, toLogin } from '@/utils';
+import { clearAuthStorage, getToken, getUserInfo, setRefreshToken, setToken, setUserInfo } from '@/utils';
 import { fetchLogin, fetchUserInfo } from '@/api';
+import type { Auth } from '@/typings/business';
+import type { ApiAuth } from '~/src/typings/api';
 import { useTabStore } from '../tab';
-import { usePermissionStore } from '../permission';
 interface AuthState {
   /** 用户信息 */
   userInfo: Auth.UserInfo;
@@ -26,7 +27,7 @@ export const useAuthStore = defineStore('auth-store', {
       return Boolean(state.token);
     },
     avatar(): string {
-      return this.userInfo.avatar || 'https://miniwx.arf-to.cn/334050.jpg';
+      return this.userInfo.headerImg || '';
     },
     name(): string {
       return this.userInfo.userName || 'weilaim';
@@ -35,27 +36,29 @@ export const useAuthStore = defineStore('auth-store', {
   actions: {
     /** 重置状态 */
     resetAuthStore() {
-      // const { toLogin } = useRouterPush(false);
-      // const {resetTabStore}
+      const { toLogin } = useRouterPush(false);
+      const { resetTabs } = useTabStore();
       // const {resetRouteStore} =
-      // const route = unref(router.currentRoute);
-      // clearAuthStorage();
-      // this.$reset();
-      // console.log('route', route.meta.requiresAuth);
-      // if (route.meta.requiresAuth) {
-      //   toLogin();
-      // }
-      // const route = unref(router.currentRoute)
-      // if(route.meta.requ)
+      const route = unref(router.currentRoute);
+      // 去除用户相关缓存
+      clearAuthStorage();
+      this.$reset();
+
+      resetTabs();
+      if (route.meta.requiresAuth) {
+        toLogin();
+      }
     },
     /**
      * 登录
-     * @param userName
+     * @param user_name
      * @param password
+     * @param captcha
+     * @param captchaId
      */
-    async login(userName: string, password: string) {
+    async login(formData: Auth.LoginInfo) {
       this.loginLoading = true;
-      const { data } = await fetchLogin(userName, password);
+      const { data } = await fetchLogin(formData);
 
       if (data) {
         await this.handleActionAfterLogin(data);
@@ -70,8 +73,8 @@ export const useAuthStore = defineStore('auth-store', {
       const { toLoginRedirect } = useRouterPush(false);
       const loginSuccess = await this.loginByToken(backendToken);
       if (loginSuccess) {
-        // 登录成功需要添加动态路由
-        await addDynamicRoutes();
+        // await addDynamicRoutes();
+
         // 跳转登录后的地址
         toLoginRedirect();
 
@@ -81,6 +84,7 @@ export const useAuthStore = defineStore('auth-store', {
           content: `欢迎回来,${this.userInfo.userName}`,
           duration: 3000
         });
+        return;
       }
 
       // 不成功则重置状态
@@ -100,27 +104,16 @@ export const useAuthStore = defineStore('auth-store', {
 
       // 获取用户信息
       const { data } = await fetchUserInfo();
-
       if (data) {
         // 登录成功后把用户信息存储到缓存中
-        setUserInfo(data);
+
+        setUserInfo(data.user);
         // 更新状态
-        this.userInfo = data;
+        this.userInfo = data.user;
         this.token = token;
         successFlag = true;
       }
       return successFlag;
-    },
-
-    async logout() {
-      const { resetTabs } = useTabStore();
-      const { resetPermission } = usePermissionStore();
-      clearAuthStorage();
-      resetPermission();
-      resetTabs();
-      this.$reset();
-      resetRouter();
-      toLogin();
     }
   }
 });

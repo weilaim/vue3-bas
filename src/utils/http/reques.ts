@@ -1,4 +1,5 @@
 import type { AxiosInstance, AxiosRequestConfig } from 'axios';
+import { getToken } from '@/utils';
 import CustomAxiosInstance from './instance';
 
 type RequestMethod = 'get' | 'post' | 'put' | 'delete';
@@ -20,14 +21,21 @@ export function createRequest(axiosConfig: AxiosRequestConfig, backendConfig?: S
   async function asyncRequest<T>(param: RequestParam): Promise<Service.RequestResult<T>> {
     const { url } = param;
     const method = param.method || 'get';
+    const defConfig = {
+      headers: {
+        'Content-Type': 'application/json',
+        'x-token': getToken()
+      }
+    };
     const { instance } = customInstance;
     const res = (await getRequestResponse({
       instance,
       method,
       url,
       data: param.data,
-      config: param.axiosConfig
+      config: defConfig
     })) as Service.RequestResult;
+
     return res;
   }
 

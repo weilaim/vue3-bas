@@ -1,13 +1,15 @@
-import { mockRequest } from '../utils';
-
+// import { useUserStore } from '@/store';
+import { request } from '@/utils';
+import type { ApiAuth } from '../typings/api';
+// const userStore = useUserStore();
 /**
  * 登录
  * @param userName 用户名
  * @param password 密码
  * @returns
  */
-export function fetchLogin(userName: string, password: string) {
-  return mockRequest.post<ApiAuth.Token>('/login', { userName, password });
+export function fetchLogin(formData: Auth.LoginInfo) {
+  return request.post<ApiAuth.Token>('/base/login', formData);
 }
 
 /**
@@ -15,5 +17,13 @@ export function fetchLogin(userName: string, password: string) {
  * @returns
  */
 export function fetchUserInfo() {
-  return mockRequest.get<ApiAuth.UserInfo>('/getUserInfo');
+  return request.get<ApiAuth.ResUserInfo>('/user/getUserInfo');
+}
+
+/**
+ * 获取验证码
+ * @returns
+ */
+export function fetchCaptCha() {
+  return request.post<ApiAuth.CpatCha>('/base/captcha');
 }

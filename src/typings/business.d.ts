@@ -14,18 +14,38 @@ declare namespace Auth {
   /** 用户信息 */
   interface UserInfo {
     /** 用户id */
-    userId: string;
+    id: string;
+    /** 颜色 */
+    activeColor?: string;
+    /** authorityId */
+    authorityId?: string;
+    baseColor?: string;
+    email?: string;
+    nickName?: string;
+    /** 是否启用账号 */
+    enable?: boolean;
+    phone?: string;
+    sideMode?: string;
+    uuid?: string;
     /** 用户名 */
     userName: string;
     /** 用户角色类型 */
     userRole: RoleTyep;
     /** 头像 */
-    avatar: string;
+    headerImg?: string;
+  }
+
+  /** 登录信息 */
+  interface LoginInfo {
+    user_name: string;
+    password: string;
+    captcha: string;
+    captchaId: string;
   }
 }
 
 declare namespace UserManagement {
-  interface User extends ApiUserManagement.User {
+  interface User extends ApiUserManagements.User {
     /** 序号 */
     index: number;
     /** 表格的key(id) */
@@ -46,5 +66,5 @@ declare namespace UserManagement {
    * 3:冻结
    * 4：软删除
    */
-  type UserStatusKey = NonNullable<User['useStatus']>;
+  type UserStatusKey = NonNullable<User['userStatus']>;
 }

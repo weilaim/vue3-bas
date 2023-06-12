@@ -1,4 +1,5 @@
 import { getLocal, setLocal, removeLocal } from '@/utils';
+import type { Auth } from '@/typings/business';
 import { EnumStorageKey } from './../../enum/common';
 
 /** 设置token */
@@ -32,10 +33,19 @@ export function removeRefreshToken() {
 /** 获取用户信息 */
 export function getUserInfo() {
   const emptyInfo: Auth.UserInfo = {
-    userId: '',
+    uuid: '',
     userName: '',
     userRole: 'user',
-    avatar: ''
+    headerImg: '',
+    id: '',
+    activeColor: '',
+    baseColor: '',
+    authorityId: '',
+    email: '',
+    enable: false,
+    nickName: '',
+    phone: '',
+    sideMode: ''
   };
   const userInfo: Auth.UserInfo = getLocal<Auth.UserInfo>(EnumStorageKey['user-info']) || emptyInfo;
   return userInfo;

@@ -1,6 +1,8 @@
 import type { GlobalThemeOverrides } from 'naive-ui';
-import themeSetting from '~/settings/theme.json';
-import { addColorAlpha, getColorPalette } from '~/src/utils';
+import { cloneDeep } from 'lodash-es';
+import { EnumStorageKey } from '@/enum';
+import { addColorAlpha, getColorPalette, getLocal, getThemeColor, removeLocal, setLocal } from '@/utils';
+import { themeSetting } from '~/settings/theme';
 
 type ColorType = 'primary' | 'info' | 'success' | 'warning' | 'error';
 type ColorScene = '' | 'Suppl' | 'Hover' | 'Pressed' | 'Active';
@@ -17,19 +19,17 @@ interface ColorAction {
  * @returns
  */
 export function initThemeSettings(): Theme.Setting {
-  const isMobile = themeSetting.isMobile || false;
-  const darkMode = themeSetting.darkMode || false;
-  const sider = themeSetting.sider || { width: 220, collapsedWidth: 64, collapsed: false };
-  const header = themeSetting.header || { visible: true, height: 60 };
-  const tab = themeSetting.tab || { visible: true, height: 50 };
-  const primaryColor = themeSetting.primaryColor || '#316C72';
-  const otherColor = themeSetting.otherColor || {
-    info: '#0099ad',
-    success: '#52c41a',
-    warning: '#faad14',
-    error: '#f5222d'
-  };
-  return { isMobile, darkMode, sider, header, tab, primaryColor, otherColor };
+  const isProd = import.meta.env.PROD;
+  // 生产环境才缓存主题配置，本地开发实时调整配置更改的配置json
+  const storageSettings = getThemeSettings();
+  if (isProd && storageSettings) {
+    return storageSettings;
+  }
+  const themeColor = getThemeColor() || themeSetting.themeColor;
+  const info = themeSetting.isCustomizeInfoColor ? themeSetting.otherColor.info : getColorPalette(themeColor, 7);
+  const otherColor = { ...themeSetting.otherColor, info };
+  const setting = cloneDeep({ ...themeSetting, themeColor, otherColor });
+  return setting;
 }
 
 /**
@@ -81,4 +81,28 @@ function getThemeColors(colors: [ColorType, string][]) {
   });
 
   return themeColor;
+}
+
+/**
+ * 获取缓存中的主题配置
+ * @returns
+ */
+function getThemeSettings() {
+  return getLocal<Theme.Setting>(EnumStorageKey['thmee-settings']);
+}
+
+/**
+ * 获取缓存中的主题配置
+ * @param settings
+ * @returns
+ */
+export function setThemeSettings(settings: Theme.Setting) {
+  return setLocal(EnumStorageKey['thmee-settings'], settings);
+}
+
+/**
+ * 清除缓存配置
+ */
+export function clearThemeSettings() {
+  removeLocal(EnumStorageKey['thmee-settings']);
 }

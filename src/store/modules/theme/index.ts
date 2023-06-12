@@ -1,8 +1,7 @@
 import { defineStore } from 'pinia';
 import type { GlobalThemeOverrides } from 'naive-ui';
 import { darkTheme } from 'naive-ui';
-import type { BuiltInGlobalTheme } from 'naive-ui/es/themes/interface';
-import { initThemeSettings, getNaiveThemeOverrides } from './helpers';
+import { initThemeSettings, getNaiveThemeOverrides, clearThemeSettings, setThemeSettings } from './helpers';
 
 type ThemeState = Theme.Setting;
 export const useThemeStore = defineStore('theme-store', {
@@ -12,16 +11,31 @@ export const useThemeStore = defineStore('theme-store', {
      * 获取主题颜色
      * @returns
      */
-    naiveThemeOverrides(): GlobalThemeOverrides {
-      return getNaiveThemeOverrides({ primary: this.primaryColor, ...this.otherColor });
+    naiveThemeOverrides(state): GlobalThemeOverrides {
+      return getNaiveThemeOverrides({ primary: state.themeColor, ...state.otherColor });
     },
-    naiveTheme(): BuiltInGlobalTheme | undefined {
-      return this.darkMode ? darkTheme : undefined;
+    /** 设置-naive-ui暗黑主题 */
+    naiveTheme(state) {
+      return state.darkMode ? darkTheme : undefined;
+    },
+    /** 页面动画模式 */
+    pageAnimateMode(state) {
+      return state.page.animate ? state.page.animateMode : undefined;
     }
   },
   actions: {
-    setIsMobile(isMobile: boolean) {
-      this.isMobile = isMobile;
+    /**
+     * 重置theme
+     */
+    resetThemeStore() {
+      clearThemeSettings();
+      this.$reset();
+    },
+    cacheThemeSettings() {
+      const isProd = import.meta.env.PROD;
+      if (isProd) {
+        setThemeSettings(this.$state);
+      }
     },
     /**
      * 设置暗黑模式
@@ -31,28 +45,138 @@ export const useThemeStore = defineStore('theme-store', {
       this.darkMode = darkMode;
     },
     /**
+     * 设置自动跟随系统主题
+     */
+    setFollowSystemTheme(visible: boolean) {
+      this.followSystemTheme = visible;
+    },
+    /**
+     * 自动跟随系统主题
+     */
+    setAutoFollowSystemMode(darkMode: boolean) {
+      if (this.followSystemTheme) {
+        this.darkMode = darkMode;
+      }
+    },
+    /**
      * 切换/关闭 暗黑模式
      */
     toggleDarkMode() {
       this.darkMode = !this.darkMode;
     },
     /**
-     * 设置 折叠侧边栏
+     * 设置布局最小宽度
      */
-    toggleCollapsed() {
-      this.sider.collapsed = !this.sider.collapsed;
+    setLayoutMinWidth(minWidth: number) {
+      this.layout.minWidth = minWidth;
+    },
+    /**
+     * 设置布局模式
+     */
+    setLayoutMode(mode: EnumType.ThemeLayoutMode) {
+      this.layout.mode = mode;
     },
     /**
      * 设置 折叠侧边栏
      */
-    setCollapsed(collapsed: boolean) {
-      this.sider.collapsed = collapsed;
+    // toggleCollapsed() {
+    //   this.sider.collapsed = !this.sider.collapsed;
+    // },
+    /** 设置侧边栏反转色 */
+    setSiderInverted(isInverted: boolean) {
+      this.sider.inverted = isInverted;
     },
-    /**
-     * 设置主题色
-     */
-    setPrimaryColor(color: string) {
-      this.primaryColor = color;
+    /** 设置头部反转色 */
+    setHeaderInverted(isInverted: boolean) {
+      this.header.inverted = isInverted;
+    },
+    /** 设置系统主题颜色 */
+    setThemeColor(themeColor: string) {
+      this.themeColor = themeColor;
+    },
+    /** 设置固定头部和多页签 */
+    setIsFixedHeaderAndTab(isFixed: boolean) {
+      this.fixedHeaderAndTab = isFixed;
+    },
+    /** 设置重载按钮可见状态 */
+    setReloadVisible(visible: boolean) {
+      this.showReload = visible;
+    },
+    /** 设置头部高度 */
+    setHeaderHeight(height: number | null) {
+      if (height) {
+        this.header.height = height;
+      }
+    },
+    /** 设置头部面包屑可见 */
+    setHeaderCrumbVisible(visible: boolean) {
+      this.header.crumb.visible = visible;
+    },
+    /** 设置头部面包屑图标可见 */
+    setHeaderCrumbIconVisible(visible: boolean) {
+      this.header.crumb.showIcon = visible;
+    },
+    /** 设置多页签可见 */
+    setTabVisible(visible: boolean) {
+      this.tab.visible = visible;
+    },
+    /** 设置多页签高度 */
+    setTabHeight(height: number | null) {
+      if (height) {
+        this.tab.height = height;
+      }
+    },
+    /** 设置多页签风格 */
+    setTabMode(mode: EnumType.ThemeTabMode) {
+      this.tab.mode = mode;
+    },
+    /** 设置多页签缓存 */
+    setTabIsCache(isCache: boolean) {
+      this.tab.isCache = isCache;
+    },
+    /** 侧边栏宽度 */
+    setSiderWidth(width: number | null) {
+      if (width) {
+        this.sider.width = width;
+      }
+    },
+    /** 侧边栏折叠时的宽度 */
+    setSiderCollapsedWidth(width: number) {
+      this.sider.collapsedWidth = width;
+    },
+    /** vertical-mix模式下侧边栏宽度 */
+    setMixSiderWidth(width: number | null) {
+      if (width) {
+        this.sider.mixWidth = width;
+      }
+    },
+    /** vertical-mix模式下侧边栏折叠时的宽度 */
+    setMixSiderCollapsedWidth(width: number) {
+      this.sider.mixCollapsedWidth = width;
+    },
+    /** vertical-mix模式下侧边栏展示子菜单的宽度 */
+    setMixSiderChildMenuWidth(width: number) {
+      this.sider.mixChildMenuWidth = width;
+    },
+    /** 设置水平模式的菜单的位置 */
+    setHorizontalMenuPosition(position: EnumType.ThemeHorizontalMenuPosition) {
+      this.menu.horizontalPosition = position;
+    },
+    /** 设置底部是否固定 */
+    setFooterIsFixed(isFixed: boolean) {
+      this.footer.fixed = isFixed;
+    },
+    /** 设置底部高度 */
+    setFooterHeight(height: number) {
+      this.footer.height = height;
+    },
+    /** 设置切换页面时是否过渡动画 */
+    setPageIsAnimate(animate: boolean) {
+      this.page.animate = animate;
+    },
+    /** 设置页面过渡动画类型 */
+    setPageAnimateMode(mode: EnumType.ThemeAnimateMode) {
+      this.page.animateMode = mode;
     }
   }
 });

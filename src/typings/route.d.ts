@@ -12,9 +12,55 @@ declare namespace AuthRoute {
     | 'constant-page'
     | 'not-found-page' // 捕获无效path的路由
     // 自定义的路由
+    // 自定义路由
     | 'dashboard'
-    | 'dashbard_analysis'
-    | 'dashboard_workbench';
+    | 'dashboard_analysis'
+    | 'dashboard_workbench'
+    | 'document'
+    | 'document_vue'
+    | 'document_vite'
+    | 'document_naive'
+    | 'document_project'
+    | 'document_project-link'
+    | 'component'
+    | 'component_button'
+    | 'component_card'
+    | 'component_table'
+    | 'plugin'
+    | 'plugin_map'
+    | 'plugin_video'
+    | 'plugin_editor'
+    | 'plugin_editor_quill'
+    | 'plugin_editor_markdown'
+    | 'plugin_copy'
+    | 'plugin_icon'
+    | 'plugin_print'
+    | 'plugin_swiper'
+    | 'plugin_charts'
+    | 'plugin_charts_echarts'
+    | 'plugin_charts_antv'
+    | 'auth-demo'
+    | 'auth-demo_permission'
+    | 'auth-demo_super'
+    | 'function'
+    | 'function_tab'
+    | 'function_tab-detail'
+    | 'function_tab-multi-detail'
+    | 'exception'
+    | 'exception_403'
+    | 'exception_404'
+    | 'exception_500'
+    | 'multi-menu'
+    | 'multi-menu_first'
+    | 'multi-menu_first_second'
+    | 'multi-menu_first_second-new'
+    | 'multi-menu_first_second-new_third'
+    | 'management'
+    | 'management_user'
+    | 'management_role'
+    | 'management_auth'
+    | 'management_route'
+    | 'about';
 
   /** 路由的path */
   type RoutePath =
@@ -46,7 +92,7 @@ declare namespace AuthRoute {
      * 哪些类型的用户有权限才能访问的路由(空的话则表示不需要权限)
      * @description 后端动态路由数据不需要该属性，直接由后端根据用户角色返回对应权限的路由数据
      */
-    permissions?: Auth.RoleType[];
+    permissions?: Auth.RoleTyep[];
     /** 缓存页面 */
     keepAlive?: boolean;
     /** 菜单和面包屑对应的图标(iconify图标名称) */
@@ -90,6 +136,12 @@ declare namespace AuthRoute {
     /** 路由属性 */
     props?: boolean | Record<string, any> | ((to: any) => Record<string, any>);
   }
+
+  /** 路由path转换动态路径 */
+  type PathToDynamicPath<Path extends RoutePath> =
+    | `${Path}/:${string}`
+    | `${Path}/:${string}(${string})`
+    | `${Path}/:${string}(${string})?`;
 
   /** 单独一级路由的key(单独路由需要添加一个父级路由用于应用布局组件) */
   type SingleRouteKey = Exclude<

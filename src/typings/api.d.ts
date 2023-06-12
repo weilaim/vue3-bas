@@ -6,11 +6,47 @@ declare namespace ApiAuth {
   }
   /** 返回的用户信息 */
   type UserInfo = Auth.UserInfo;
+
+  interface ResUserInfo {
+    user: Auth.UserInfo;
+  }
+  interface CpatCha {
+    /** 验证码 */
+    captchaLength: number;
+    /** 验证码id */
+    captchaId: string;
+    /** 路径 */
+    picPath: string;
+  }
 }
 
-declare namespace ApiUserManagement {
+declare namespace ApiRoute {
+  /** 动态路由 */
+  interface Route {
+    routes: AuthRoute.Route[];
+    /** 路由首页对应的key */
+    home: AuthRoute.RouteKey;
+  }
+}
+
+// 验证数据库
+declare namespace CheckDB {
+  interface DbVali {
+    needInit: boolean;
+  }
+  interface DB {
+    type: string;
+    host: string;
+    port: string;
+    userName: string;
+    password: string;
+    dbName: string;
+  }
+}
+
+declare namespace ApiUserManagements {
   interface User {
-    id: string;
+    id?: string;
     userName: string | null;
     age: number | null;
     gender: '0' | '1' | null;

@@ -42,6 +42,7 @@ export function resResolve(response: AxiosResponse) {
   // eslint-disable-next-line no-warning-comments
   // TODO 处理不同的 response.headers
   const { data, status, config, statusText } = response;
+
   if (data?.code !== 200) {
     const code = data?.code ?? status;
     /** 根据code处理对应的操作，并返回处理后的message */
@@ -65,7 +66,9 @@ export function resReject(error: AxiosError) {
     const code = error?.code;
     /** 根据code处理对应的操作，并返回处理后的message */
     const message = resolveResError(code, error.message);
-    window.$message?.error(message);
+    console.log('message', message);
+
+    window.$message?.error(message, { duration: 1000 * 3 });
     return Promise.reject(new AxiosRejectError({ code, message, data: error }));
   }
   // const { data, status, config } = error.response;

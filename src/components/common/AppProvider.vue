@@ -55,7 +55,7 @@ watch(
 );
 
 function handleWindowResize() {
-  themeStore.setIsMobile(document.body.offsetWidth <= 640);
+  // themeStore.setIsMobile(document.body.offsetWidth <= 640);
 }
 
 onMounted(() => {
@@ -68,7 +68,7 @@ onBeforeUnmount(() => {
 });
 </script>
 <template>
-  <n-config-provider wh-full :theme-overrides="themeStore.naiveThemeOverrides" :theme="themeStore.naiveTheme">
+  <n-config-provider class="wh-full" :theme-overrides="themeStore.naiveThemeOverrides" :theme="themeStore.naiveTheme">
     <n-loading-bar-provider>
       <n-dialog-provider>
         <n-notification-provider>

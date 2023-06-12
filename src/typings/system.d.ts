@@ -1,5 +1,20 @@
 /** 枚举的key类型 */
 declare namespace EnumType {
+  /** 布局组件名称 */
+  type LayoutComponentName = keyof typeof import('@/enum').EnumLayoutComponentName;
+
+  /** 布局模式 */
+  type ThemeLayoutMode = keyof typeof import('@/enum').EnumThemeLayoutMode;
+
+  /** 多页签风格 */
+  type ThemeTabMode = keyof typeof import('@/enum').EnumThemeTabMode;
+
+  /** 水平模式的菜单位置 */
+  type ThemeHorizontalMenuPosition = keyof typeof import('@/enum').EnumThemeHorizontalMenuPosition;
+
+  /** 过渡动画 */
+  type ThemeAnimateMode = keyof typeof import('@/enum').EnumThemeAnimateMode;
+
   /** 登录模块 */
   type LoginModuleKey = keyof typeof import('@/enum').EnumLoginModule;
 }
@@ -84,11 +99,23 @@ declare namespace Service {
 }
 
 /** 菜单项配置 */
-type GlobalMenuOpiton = import('naive-ui').MenuOption & {
+type GlobalMenuOption = import('naive-ui').MenuOption & {
   key: string;
   label: string;
-  path: string;
+  routeName?: string;
+  routePath?: string;
+  path?: string;
   icon?: () => import('vue').VNodeChild;
-  order: number;
-  children?: GlobalMenuOpiton[];
+  order?: number;
+  children?: GlobalMenuOption[];
 };
+
+/** 多标签Tab的路由 */
+interface GlobalTabRoute
+  extends Pick<import('vue-router').RouteLocationNormalizedLoaded, 'name' | 'fullPath' | 'meta'> {
+  // 滚动的位置
+  scrollPosition: {
+    left: number;
+    top: number;
+  };
+}
