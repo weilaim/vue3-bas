@@ -6,6 +6,7 @@ specifiers:
   '@iconify/json': ^2.1.119
   '@iconify/vue': ^4.0.0
   '@pureadmin/utils': ^1.8.7
+  '@soybeanjs/vue-admin-layout': ^1.1.1
   '@types/crypto-js': ^4.1.1
   '@types/lodash-es': ^4.17.6
   '@types/qs': ^6.9.7
@@ -57,6 +58,7 @@ specifiers:
 
 dependencies:
   '@pureadmin/utils': 1.8.7_vue@3.2.41
+  '@soybeanjs/vue-admin-layout': 1.2.1_vue@3.2.41
   '@vueuse/core': 8.9.4_vue@3.2.41
   axios: 0.27.2
   crypto-js: 4.1.1
@@ -1967,6 +1969,21 @@ packages:
       rollup: 2.79.1
     dev: true
 
+  /@soybeanjs/vue-admin-layout/1.2.1_vue@3.2.41:
+    resolution: {integrity: sha512-3A8csIzBz1oFIILm28QZ0KdNBN/YiJYWmLPmtquYcMfcr9pMbwd9g/QiJsY2LBXJ067St+oIubqCYcKJypulmA==}
+    peerDependencies:
+      '@vue/composition-api': ^1.4.6
+      vue: ^2.0.0 || >=3.0.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      '@unocss/reset': 0.53.1
+      colord: 2.9.3
+      css-render: 0.15.12
+      vue: 3.2.41
+    dev: false
+
   /@surma/rollup-plugin-off-main-thread/2.2.3:
     resolution: {integrity: sha512-lR8q/9W7hZpMWweNiAKU7NQerBnzQQLvi8qnTDU/fxItPhtZVMbPV3lbCwjhIlNBe9Bbr5V+KHshvWmVSG9cxQ==}
     dependencies:
@@ -2362,6 +2379,10 @@ packages:
   /@unocss/reset/0.46.3:
     resolution: {integrity: sha512-Jb9zx3h5IPVjSAyW+cLq+/cyeTcExtRaK+Jd7Zjcw6LhgeY5uFeEAQPoFVLCX8az7BXO6FQD3cAmWvl/yogAOA==}
     dev: true
+
+  /@unocss/reset/0.53.1:
+    resolution: {integrity: sha512-rkb6mB0JESRFxZXSknZ3TWQ92TmZwpJyF2OV+7GPZrtUk1YBzydH6DfLjLPxyD1xEUtsQsacNHFO7NEmd9WO6A==}
+    dev: false
 
   /@unocss/scope/0.45.30:
     resolution: {integrity: sha512-SBxjMNLGHiZA32hGTGZL1wpPfzegCd3WB8LdrZwAgo85EbMYCq8UEL6YhScjL3+FIwhcZQutenasLoRNcbFHqw==}
@@ -3349,7 +3370,6 @@ packages:
 
   /colord/2.9.3:
     resolution: {integrity: sha512-jeC1axXpnb0/2nn/Y1LPuLdgXBLH7aDcHu4KEKfqw3CUhX7ZpfBSlPKyqXE6btIgEzfWtrX3/tyBCaCvXvMkOw==}
-    dev: true
 
   /colorette/2.0.19:
     resolution: {integrity: sha512-3tlv/dIP7FWvj3BsbHrGLJ6l/oKh1O3TcgBqMn+yyCagOxc23fyzDS6HypQbgxWbkpDnf52p1LuR4eWDQ/K9WQ==}
@@ -3570,6 +3590,13 @@ packages:
     dependencies:
       '@emotion/hash': 0.8.0
       '@types/node': 17.0.45
+      csstype: 3.0.11
+    dev: false
+
+  /css-render/0.15.12:
+    resolution: {integrity: sha512-eWzS66patiGkTTik+ipO9qNGZ+uNuGyTmnz6/+EJIiFg8+3yZRpnMwgFo8YdXhQRsiePzehnusrxVvugNjXzbw==}
+    dependencies:
+      '@emotion/hash': 0.8.0
       csstype: 3.0.11
     dev: false
 
@@ -9132,7 +9159,7 @@ packages:
     dependencies:
       '@css-render/vue3-ssr': 0.15.11_vue@3.2.41
       '@juggle/resize-observer': 3.4.0
-      css-render: 0.15.11
+      css-render: 0.15.12
       evtd: 0.2.4
       seemly: 0.3.6
       vdirs: 0.1.8_vue@3.2.41

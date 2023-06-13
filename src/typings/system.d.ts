@@ -103,7 +103,7 @@ type GlobalMenuOption = import('naive-ui').MenuOption & {
   key: string;
   label: string;
   routeName?: string;
-  routePath?: string;
+  routePath: string;
   path?: string;
   icon?: () => import('vue').VNodeChild;
   order?: number;
@@ -119,3 +119,25 @@ interface GlobalTabRoute
     top: number;
   };
 }
+
+/**
+ * 全局头部属性
+ */
+interface GlobalHeaderProps {
+  /** 显示logo */
+  showLogo: boolean;
+  /** 显示头部菜单 */
+  showHeaderMenu: boolean;
+  /** 显示折叠菜单 */
+  showMenuCollapse: boolean;
+}
+
+/** 面包屑 */
+type GlobalBreadcrumb = import('naive-ui').DropdownOption & {
+  key: string;
+  label: string;
+  disabled: boolean;
+  routeName: string;
+  hasChildren: boolean;
+  children?: GlobalBreadcrumb[];
+};

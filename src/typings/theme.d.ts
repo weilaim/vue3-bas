@@ -26,6 +26,14 @@ interface Header {
   crumb: Crumb;
 }
 
+/** 面包屑 */
+interface Crumb {
+  /** 面包屑可见 */
+  visible: boolean;
+  /** 显示图标 */
+  showIcon: boolean;
+}
+
 /** 页面样式 */
 interface Page {
   /** 页面是否开启动画 */
@@ -33,7 +41,7 @@ interface Page {
   /** 动画类型 */
   animateMode: EnumType.ThemeAnimateMode;
   /** 动画类型列表 */
-  animateModeList: AnimateModeList[];
+  // animateModeList: AnimateModeList[];
 }
 /** 多标签样式 */
 interface Tab {
@@ -44,7 +52,7 @@ interface Tab {
   /** 多页签风格 */
   mode: EnumType.ThemeTabMode;
   /** 多页签风格列表 */
-  modeList: ThemeTabModeList[];
+  // modeList: ThemeTabModeList[];
   /** 开启多页签缓存 */
   isCache: boolean;
 }
@@ -93,6 +101,22 @@ declare namespace Theme {
     /** 页面样式 */
     page: Page;
   }
+}
+
+/** 底部样式 */
+interface Footer {
+  /** 是否固定底部 */
+  fixed: boolean;
+  /** 底部高度 */
+  height: number;
+}
+
+/** 菜单样式 */
+interface Menu {
+  /** 水平模式的菜单的位置 */
+  horizontalPosition: EnumType.ThemeHorizontalMenuPosition;
+  /** 水平模式的菜单的位置列表 */
+  // horizontalPositionList: HorizontalMenuPositionList[];
 }
 
 /** 布局样式 */
