@@ -31,4 +31,8 @@ function handleUpdateMenu(_key: string, item: MenuOption) {
     </n-scrollbar>
   </div>
 </template>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+// :deep(.n-menu-item-content-header) {
+//   overflow: inherit !important;
+// }
+</style>

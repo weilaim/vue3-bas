@@ -45,6 +45,10 @@ export const useAppStore = defineStore('app', {
      */
     toggleSiderCollapse() {
       this.siderCollapse = !this.siderCollapse;
+    },
+    /** 切换抽屉可见状态 */
+    toggleSettingDrawerVisible() {
+      this.settingDrawerVisible = !this.settingDrawerVisible;
     }
   }
 });

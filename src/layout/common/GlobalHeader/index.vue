@@ -1,8 +1,18 @@
 <script setup lang="ts">
 import { useThemeStore } from '@/store';
 import { useBasicLayout } from '@/composables';
-import GlobalLogo from '../GlobalLogo/index.vue';
-import { MenuCollapse, GlobalBreadcrumb, HeaderMenu } from './components';
+import { GlobalSearch, GlobalLogo } from '..';
+import {
+  MenuCollapse,
+  GlobalBreadcrumb,
+  HeaderMenu,
+  GithubSite,
+  FullScreen,
+  ThemeMode,
+  SystemMessage,
+  SettingButton,
+  UserAvatar
+} from './components';
 
 defineOptions({ name: 'GlobalHeader' });
 interface Prorps {
@@ -14,6 +24,7 @@ defineProps<Prorps>();
 
 const theme = useThemeStore();
 const { isMobile } = useBasicLayout();
+const showButton = import.meta.env.PROD && import.meta.env.VITE_VERCEL !== 'Y';
 </script>
 <template>
   <dark-mode-container class="global-header flex-y-center h-full" :inverted="theme.header.inverted">
@@ -25,6 +36,22 @@ const { isMobile } = useBasicLayout();
       <global-breadcrumb v-if="theme.header.crumb.visible && !isMobile" />
     </div>
     <header-menu v-else />
+    <div class="flex justify-end h-full">
+      <!-- 搜索 -->
+      <global-search />
+      <!-- github -->
+      <github-site />
+      <!-- 全屏 -->
+      <full-screen />
+      <!-- 主题切换 -->
+      <theme-mode />
+
+      <system-message />
+      <!-- 设置 -->
+      <setting-button v-if="showButton" />
+      <!-- 用户信息 -->
+      <user-avatar />
+    </div>
   </dark-mode-container>
 </template>
 <style lang="scss" scoped>

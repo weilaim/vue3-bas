@@ -8,7 +8,7 @@ defineOptions({ name: 'SvgIcon' });
  */
 interface Props {
   /** 图标名称(图片的文件名) */
-  icon: string;
+  icon?: string;
   /** 前缀 */
   prefix?: string;
   /** 本地svg的文件名字 */

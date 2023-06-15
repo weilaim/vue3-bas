@@ -27,7 +27,7 @@ function handleSwitch() {
 }
 </script>
 <template>
-  <div flex-center text-18px cursor-pointer @click="handleSwitch">
+  <div class="flex-center text-18px cursor-pointer" @click="handleSwitch">
     <icon-mdi-moon-waning-crescent v-if="darkMode" />
     <icon-mdi-white-balance-sunny v-else />
   </div>

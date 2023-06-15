@@ -3,8 +3,6 @@ import { router } from '@/router';
 import { useRouterPush } from '@/composables';
 import { clearAuthStorage, getToken, getUserInfo, setRefreshToken, setToken, setUserInfo } from '@/utils';
 import { fetchLogin, fetchUserInfo } from '@/api';
-import type { Auth } from '@/typings/business';
-import type { ApiAuth } from '~/src/typings/api';
 import { useTabStore } from '../tab';
 interface AuthState {
   /** 用户信息 */
