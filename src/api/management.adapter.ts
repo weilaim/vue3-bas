@@ -1,6 +1,4 @@
-import type { ApiUserManagement } from '../typings/api';
-
-export function adapterOfFetchUserList(data: ApiUserManagement.User[] | null): UserManagement.User[] {
+export function adapterOfFetchUserList(data: ApiUserManagements.User[] | null): UserManagement.User[] {
   if (!data) return [];
 
   return data.map((item, index) => {

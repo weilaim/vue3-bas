@@ -49,7 +49,7 @@ declare namespace UserManagement {
     /** 序号 */
     index: number;
     /** 表格的key(id) */
-    key: string;
+    key?: string;
   }
 
   /**

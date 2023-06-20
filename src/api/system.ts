@@ -1,13 +1,12 @@
-// import { useUserStore } from '@/store';
 import { request } from '@/utils';
-import type { ApiAuth } from '../typings/api';
-// const userStore = useUserStore();
+
 /**
  * 登录
  * @param userName 用户名
  * @param password 密码
  * @returns
  */
+
 export function fetchLogin(formData: Auth.LoginInfo) {
   return request.post<ApiAuth.Token>('/base/login', formData);
 }

@@ -107,6 +107,7 @@ export const useRouteStore = defineStore('route-store', {
     async initDynamicRoute() {
       const { id } = getUserInfo();
       const { data } = await getAsyncRoutes(id);
+
       if (data) {
         this.routeHomeName = data.home;
         // 动态路由模式下更新跟路由的重定向

@@ -7,7 +7,7 @@ import { adapterOfFetchUserList } from './management.adapter';
  * @returns
  */
 export const fetchUserList = async () => {
-  const data = await mockRequest.post<ApiUserManagement.User[] | null>('/getAllUserlist');
+  const data = await mockRequest.post<ApiUserManagements.User[] | null>('/getAllUserlist');
   console.log('data', data);
 
   return adapter(adapterOfFetchUserList, data);

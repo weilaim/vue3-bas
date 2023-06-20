@@ -3,7 +3,7 @@ import AdminLayout from '@soybeanjs/vue-admin-layout';
 import { useAppStore, useThemeStore } from '@/store';
 import { useBasicLayout } from '@/composables';
 import { useBoolean } from '@/hooks';
-import { GlobalHeader } from '../common';
+import { GlobalHeader, GlobalContent, GlobalSider, GlobalTab,GlobalFooter } from '../common';
 defineOptions({ name: 'BasicLayout' });
 const app = useAppStore();
 const theme = useThemeStore();
@@ -28,6 +28,16 @@ const { bool: addMainOverflowHidden, setBool: setAddMainOverflowHidden } = useBo
   >
     <template #header>
       <global-header v-bind="headerProps" />
+    </template>
+    <template #tab>
+      <global-tab />
+    </template>
+    <template #sider>
+      <global-sider />
+    </template>
+    <global-content @hide-main-overflow="setAddMainOverflowHidden" />
+    <template #footer>
+      <global-footer />
     </template>
   </admin-layout>
 </template>

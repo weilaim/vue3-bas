@@ -102,7 +102,7 @@ declare namespace Service {
 type GlobalMenuOption = import('naive-ui').MenuOption & {
   key: string;
   label: string;
-  routeName?: string;
+  routeName: string;
   routePath: string;
   path?: string;
   icon?: () => import('vue').VNodeChild;

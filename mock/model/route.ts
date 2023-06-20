@@ -1,4 +1,4 @@
-import { Auth } from "@/typings/business";
+// import type { Auth } from '@/typings/business';
 
 export const routeModel: Record<Auth.RoleTyep, AuthRoute.Route[]> = {
   super: [
