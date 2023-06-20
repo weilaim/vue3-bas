@@ -52,6 +52,7 @@ function resetFirstDegreeMenus() {
 
 function handleMixMenu(routeName: string, hasChildren: boolean) {
   setActiveParentRouteName(routeName);
+
   if (hasChildren) {
     openDrawer();
   } else {
@@ -68,6 +69,7 @@ const activeChildMenus = computed(() => {
     }
     return flag;
   });
+  return menus;
 });
 
 watch(

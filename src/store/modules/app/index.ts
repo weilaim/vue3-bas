@@ -49,6 +49,16 @@ export const useAppStore = defineStore('app', {
     /** 切换抽屉可见状态 */
     toggleSettingDrawerVisible() {
       this.settingDrawerVisible = !this.settingDrawerVisible;
+    },
+    /**
+     * 关闭设置抽屉
+     */
+    closeSettingDrawer() {
+      this.settingDrawerVisible = false;
+    },
+    /** 设置vertical-mix模式下 侧边栏的固定状态 */
+    toggleMixSiderFixed() {
+      this.mixSiderFixed = !this.mixSiderFixed;
     }
   }
 });

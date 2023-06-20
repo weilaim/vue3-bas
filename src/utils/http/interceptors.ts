@@ -66,7 +66,6 @@ export function resReject(error: AxiosError) {
     const code = error?.code;
     /** 根据code处理对应的操作，并返回处理后的message */
     const message = resolveResError(code, error.message);
-    console.log('message', message);
 
     window.$message?.error(message, { duration: 1000 * 3 });
     return Promise.reject(new AxiosRejectError({ code, message, data: error }));

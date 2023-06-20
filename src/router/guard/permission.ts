@@ -27,9 +27,6 @@ export async function createPermissionGuardRoute(
   const permissions = to.meta.permissions || [];
   const needLogin = Boolean(to.meta?.requiresAuth) || Boolean(permissions.length);
   const hasPermission = !permissions.length || permissions.includes(auth.userInfo.userRole);
-  console.log('islogin', isLogin);
-  console.log('needlogin', needLogin);
-  console.log('hasPermission', hasPermission);
 
   const actions: Common.StrategyAction[] = [
     // 已登录状态跳转登录页，跳转至首页

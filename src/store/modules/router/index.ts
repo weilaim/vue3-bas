@@ -53,10 +53,8 @@ export const useRouteStore = defineStore('route-store', {
       const isDynamicRoute = this.authRouteMode === 'dynamic';
 
       if (isDynamicRoute) {
-        console.log('动态');
         await this.initDynamicRoute();
       } else {
-        console.log('静态');
         await this.initStaticRoute();
       }
     },

@@ -40,13 +40,10 @@ export async function createDynamicGuard(
       return false;
     }
   }
-  console.log('权限路由已经加载，仍然未找到，重定向到not-found */');
 
-  console.log('to home', to.name);
 
   /** 权限路由已经加载，仍然未找到，重定向到not-found */
   if (to.name === routeName('not-found-page') && to.name === routeName('login')) {
-    console.log('to home', to.name);
 
     next({ name: routeName('not-found'), replace: true });
     return false;

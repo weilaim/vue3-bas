@@ -6,5 +6,16 @@ import GlobalSider from './GlobalSider/index.vue';
 import GlobalTab from './GlobalTab/index.vue';
 import GlobalFooter from './GlobalFooter/index.vue';
 import GlobalBackTop from './GlobalBackTop/index.vue';
+import SettingDrawer from './SettingDrawer/index.vue';
 
-export { GlobalContent, GlobalHeader, GlobalLogo, GlobalSearch, GlobalSider, GlobalTab, GlobalFooter, GlobalBackTop };
+export {
+  GlobalContent,
+  GlobalHeader,
+  GlobalLogo,
+  GlobalSearch,
+  GlobalSider,
+  GlobalTab,
+  GlobalFooter,
+  GlobalBackTop,
+  SettingDrawer
+};

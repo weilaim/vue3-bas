@@ -64,3 +64,23 @@ export function transformAuthRouteToMenu(routes: AuthRoute.Route[]): GlobalMenuO
 
   return globalMenu;
 }
+/**
+ * 获取当前路由所在菜单数据的paths
+ * @param activeKey
+ * @param menus
+ */
+export function getActiveKeyPathsOfMenus(activeKey: string, menus: GlobalMenuOption[]) {
+  const keys = menus.map(menu => getActiveKeyPathsOfMenu(activeKey, menu)).flat(1);
+  return keys;
+}
+
+function getActiveKeyPathsOfMenu(activeKey: string, menu: GlobalMenuOption) {
+  const keys: string[] = [];
+  if (activeKey.includes(menu.routeName)) {
+    keys.push(menu.routeName);
+  }
+  if (menu.children) {
+    keys.push(...menu.children.map(item => getActiveKeyPathsOfMenu(activeKey, item as GlobalMenuOption)).flat(1));
+  }
+  return keys;
+}

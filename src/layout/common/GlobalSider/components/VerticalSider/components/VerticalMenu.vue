@@ -3,6 +3,7 @@ import { useRoute } from 'vue-router';
 import type { MenuOption } from 'naive-ui';
 import { useAppStore, useRouteStore, useThemeStore } from '@/store';
 import { useRouterPush } from '@/composables';
+import { getActiveKeyPathsOfMenus } from '@/utils';
 
 const { routerPush } = useRouterPush();
 
@@ -24,6 +25,14 @@ function handleUpdateMenu(_key: string, item: MenuOption) {
 function handleUpdateExpandedKeys(key: string[]) {
   expandedKeys.value = key;
 }
+
+watch(
+  () => route.name,
+  () => {
+    expandedKeys.value = getActiveKeyPathsOfMenus(activeKey.value, menus.value);
+  },
+  { immediate: true }
+);
 </script>
 <template>
   <n-scrollbar class="flex-1-hidden">

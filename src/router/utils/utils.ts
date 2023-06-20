@@ -28,7 +28,6 @@ export async function addDynamicRoutes() {
     //   : await permissionStore.generateRoutesBack(); // 后端生成路由
     const accessRoutes = permissionStore.generateRoutes(userStore.role);
     // 处理成前端的格式
-    console.log(accessRoutes);
     accessRoutes.forEach((route: RouteType) => {
       // eslint-disable-next-line no-unused-expressions
       !router.hasRoute(route.name) && router.addRoute(route);
