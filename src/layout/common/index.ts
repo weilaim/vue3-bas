@@ -5,5 +5,6 @@ import GlobalSearch from './GlobalSearch/index.vue';
 import GlobalSider from './GlobalSider/index.vue';
 import GlobalTab from './GlobalTab/index.vue';
 import GlobalFooter from './GlobalFooter/index.vue';
+import GlobalBackTop from './GlobalBackTop/index.vue';
 
-export { GlobalContent, GlobalHeader, GlobalLogo, GlobalSearch, GlobalSider, GlobalTab, GlobalFooter };
+export { GlobalContent, GlobalHeader, GlobalLogo, GlobalSearch, GlobalSider, GlobalTab, GlobalFooter, GlobalBackTop };
