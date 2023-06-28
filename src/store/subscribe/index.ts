@@ -1,3 +1,7 @@
-export {};
-// import subscribeAppStore from './app';
-// import subscribeThemeStore from './theme.ts'
+import subscribeAppStore from './app';
+import subscribeThemeStore from './theme';
+
+export function subscribeStore() {
+  subscribeAppStore();
+  subscribeThemeStore();
+}

@@ -2,7 +2,7 @@ import type { GlobalThemeOverrides } from 'naive-ui';
 import { cloneDeep } from 'lodash-es';
 import { EnumStorageKey } from '@/enum';
 import { addColorAlpha, getColorPalette, getLocal, getThemeColor, removeLocal, setLocal } from '@/utils';
-import { themeSetting } from '~/settings/theme';
+import { themeSetting } from '@/settings/theme';
 
 type ColorType = 'primary' | 'info' | 'success' | 'warning' | 'error';
 type ColorScene = '' | 'Suppl' | 'Hover' | 'Pressed' | 'Active';
