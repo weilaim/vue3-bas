@@ -12,6 +12,7 @@ import {
   transformRoutePathToRouteName
 } from '@/utils';
 import { getAsyncRoutes } from '~/src/api';
+import { useTabStore } from '../tab';
 // import { useTabStore } from '../tab';
 
 interface RouteState {
@@ -45,7 +46,8 @@ export const useRouteStore = defineStore('route-store', {
   actions: {
     async initAuthRoute() {
       // 初始化首页标签路由
-      // const { initHomeTab } = useTabStore(); 可以先略过后面在调整
+      const { initHomeTab } = useTabStore();
+      // 可以先略过后面在调整;
       // 获取用户id
       const { id } = getUserInfo();
 
@@ -57,6 +59,10 @@ export const useRouteStore = defineStore('route-store', {
       } else {
         await this.initStaticRoute();
       }
+
+      // 多页签的初始化
+      initHomeTab(this.routeHomeName, router);
+      this.isInitAuthRoute = true;
     },
     /**
      * 处理权限路由转成菜单

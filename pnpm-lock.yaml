@@ -1,15 +1,18 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@better-scroll/core': ^2.4.2
   '@commitlint/cli': ^17.1.2
   '@commitlint/config-conventional': ^17.1.0
   '@iconify/json': ^2.1.119
   '@iconify/vue': ^4.0.0
   '@pureadmin/utils': ^1.8.7
   '@soybeanjs/vue-admin-layout': ^1.1.1
+  '@soybeanjs/vue-admin-tab': ^1.0.5
   '@types/crypto-js': ^4.1.1
   '@types/lodash-es': ^4.17.6
   '@types/qs': ^6.9.7
+  '@types/ua-parser-js': ^0.7.36
   '@unocss/preset-attributify': ^0.46.3
   '@unocss/preset-icons': ^0.46.3
   '@unocss/preset-uno': ^0.45.30
@@ -39,6 +42,7 @@ specifiers:
   sass: ^1.53.0
   swiper: ^8.4.3
   typescript: ^4.8.4
+  ua-parser-js: ^1.0.2
   unocss: ^0.46.3
   unplugin-auto-import: ^0.9.3
   unplugin-icons: ^0.14.11
@@ -57,8 +61,10 @@ specifiers:
   vue-tsc: ^1.0.9
 
 dependencies:
+  '@better-scroll/core': 2.5.1
   '@pureadmin/utils': 1.8.7_vue@3.2.41
   '@soybeanjs/vue-admin-layout': 1.2.1_vue@3.2.41
+  '@soybeanjs/vue-admin-tab': 1.0.9_vue@3.2.41
   '@vueuse/core': 8.9.4_vue@3.2.41
   axios: 0.27.2
   crypto-js: 4.1.1
@@ -68,6 +74,7 @@ dependencies:
   pinia: 2.0.23_l7r24p6nevbtlimqmqcwa3ouhu
   qs: 6.11.0
   swiper: 8.4.4
+  ua-parser-js: 1.0.35
   vue: 3.2.41
   vue-router: 4.1.6_vue@3.2.41
 
@@ -79,6 +86,7 @@ devDependencies:
   '@types/crypto-js': 4.1.1
   '@types/lodash-es': 4.17.6
   '@types/qs': 6.9.7
+  '@types/ua-parser-js': 0.7.36
   '@unocss/preset-attributify': 0.46.3
   '@unocss/preset-icons': 0.46.3
   '@unocss/preset-uno': 0.45.30
@@ -1326,6 +1334,16 @@ packages:
       '@babel/helper-validator-identifier': 7.19.1
       to-fast-properties: 2.0.0
 
+  /@better-scroll/core/2.5.1:
+    resolution: {integrity: sha512-koKOuYA55dQ04FJRIVUpMGDr1hbCfWmfX0MGp1hKagkQSWSRpwblqACiwtggVauoj9aaJRJZ9hDsTM4weaavlg==}
+    dependencies:
+      '@better-scroll/shared-utils': 2.5.1
+    dev: false
+
+  /@better-scroll/shared-utils/2.5.1:
+    resolution: {integrity: sha512-AplkfSjXVYP9LZiD6JsKgmgQJ/mG4uuLmBuwLz8W5OsYc7AYTfN8kw6GqZ5OwCGoXkVhBGyd8NeC4xwYItp0aw==}
+    dev: false
+
   /@commitlint/cli/17.1.2:
     resolution: {integrity: sha512-h/4Hlka3bvCLbnxf0Er2ri5A44VMlbMSkdTRp8Adv2tRiklSTRIoPGs7OEXDv3EoDs2AAzILiPookgM4Gi7LOw==}
     engines: {node: '>=v14'}
@@ -1984,6 +2002,21 @@ packages:
       vue: 3.2.41
     dev: false
 
+  /@soybeanjs/vue-admin-tab/1.0.9_vue@3.2.41:
+    resolution: {integrity: sha512-dj0axpUS5xLG2wm3+uFz/N7fvoZzZuIS78ZrWrdVMRaFhzcqvtLy+vVrn+4D8Y25TzhrpbswW8qJthNb4qn40Q==}
+    peerDependencies:
+      '@vue/composition-api': ^1.4.6
+      vue: ^2.0.0 || >=3.0.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      '@unocss/reset': 0.53.1
+      colord: 2.9.3
+      css-render: 0.15.12
+      vue: 3.2.41
+    dev: false
+
   /@surma/rollup-plugin-off-main-thread/2.2.3:
     resolution: {integrity: sha512-lR8q/9W7hZpMWweNiAKU7NQerBnzQQLvi8qnTDU/fxItPhtZVMbPV3lbCwjhIlNBe9Bbr5V+KHshvWmVSG9cxQ==}
     dependencies:
@@ -2091,6 +2124,10 @@ packages:
 
   /@types/trusted-types/2.0.2:
     resolution: {integrity: sha512-F5DIZ36YVLE+PN+Zwws4kJogq47hNgX3Nx6WyDJ3kcplxyke3XIzB8uK5n/Lpm1HBsbGzd6nmGehL8cPekP+Tg==}
+    dev: true
+
+  /@types/ua-parser-js/0.7.36:
+    resolution: {integrity: sha512-N1rW+njavs70y2cApeIw1vLMYXRwfBy+7trgavGuuTfOd7j1Yh7QTRc/yqsPl6ncokt72ZXuxEU0PiCp9bSwNQ==}
     dev: true
 
   /@types/unist/2.0.6:
@@ -8448,6 +8485,10 @@ packages:
     resolution: {integrity: sha512-QCh+85mCy+h0IGff8r5XWzOVSbBO+KfeYrMQh7NJ58QujwcE22u+NUSmUxqF+un70P9GXKxa2HCNiTTMJknyjQ==}
     engines: {node: '>=4.2.0'}
     hasBin: true
+
+  /ua-parser-js/1.0.35:
+    resolution: {integrity: sha512-fKnGuqmTBnIE+/KXSzCn4db8RTigUzw1AN0DmdU6hJovUTbYJKyqj+8Mt1c4VfRDnOVJnENmfYkIPZ946UrSAA==}
+    dev: false
 
   /ufo/0.8.6:
     resolution: {integrity: sha512-fk6CmUgwKCfX79EzcDQQpSCMxrHstvbLswFChHS0Vump+kFkw7nJBfTZoC1j0bOGoY9I7R3n2DGek5ajbcYnOw==}

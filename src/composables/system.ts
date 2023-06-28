@@ -1,3 +1,4 @@
+import UAParser from 'ua-parser-js';
 interface AppInfo {
   /** 项目名称 */
   name: string;
@@ -14,4 +15,10 @@ export function useAppInfo(): AppInfo {
     title,
     desc
   };
+}
+
+export function useDeviceInfo() {
+  const parser = new UAParser();
+  const result = parser.getResult();
+  return result;
 }

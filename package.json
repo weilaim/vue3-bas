@@ -17,8 +17,10 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@better-scroll/core": "^2.4.2",
     "@pureadmin/utils": "^1.8.7",
     "@soybeanjs/vue-admin-layout": "^1.1.1",
+    "@soybeanjs/vue-admin-tab": "^1.0.5",
     "@vueuse/core": "^8.9.4",
     "axios": "^0.27.2",
     "crypto-js": "^4.1.1",
@@ -28,6 +30,7 @@
     "pinia": "^2.0.23",
     "qs": "^6.11.0",
     "swiper": "^8.4.3",
+    "ua-parser-js": "^1.0.2",
     "vue": "^3.2.37",
     "vue-router": "^4.1.5"
   },
@@ -39,6 +42,7 @@
     "@types/crypto-js": "^4.1.1",
     "@types/lodash-es": "^4.17.6",
     "@types/qs": "^6.9.7",
+    "@types/ua-parser-js": "^0.7.36",
     "@unocss/preset-attributify": "^0.46.3",
     "@unocss/preset-icons": "^0.46.3",
     "@unocss/preset-uno": "^0.45.30",

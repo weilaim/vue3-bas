@@ -4,9 +4,9 @@ type ServiceEnv = Record<ServiceEnvType, ServiceEnvConfig>;
 /** 不同请求服务的环境配置 */
 const serviceEnv: ServiceEnv = {
   dev: {
-    url: 'http://172.24.51.57:8888',
+    url: 'http://172.30.51.252:8888',
     urlPattern: '/url-pattern',
-    secondUrl: 'http://172.24.51.57:8888',
+    secondUrl: 'http://172.30.51.252:8888',
     secondUrlPattern: '/second-url-pattern'
   },
   test: {
