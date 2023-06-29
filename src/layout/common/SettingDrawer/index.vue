@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useAppStore } from '@/store';
-import { DrawerButton, DarkMode, LayoutMode, ThemeColorSelect } from './components';
+import { DrawerButton,ThemeConfig, PageView, DarkMode, LayoutMode, PageFunc, ThemeColorSelect } from './components';
 
 defineOptions({ name: 'SettingDrawer' });
 const app = useAppStore();
@@ -12,6 +12,9 @@ const showButton = import.meta.env.DEV || import.meta.env.VITE_VERCEL === 'Y';
       <dark-mode />
       <layout-mode />
       <theme-color-select />
+      <page-func />
+      <page-view />
+      <theme-config />
     </n-drawer-content>
   </n-drawer>
   <drawer-button v-if="showButton" />

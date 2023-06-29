@@ -41,7 +41,12 @@ interface Page {
   /** 动画类型 */
   animateMode: EnumType.ThemeAnimateMode;
   /** 动画类型列表 */
-  // animateModeList: AnimateModeList[];
+  animateModeList: AnimateModeList[];
+}
+
+interface AnimateModeList {
+  value: EnumType.ThemeAnimateMode;
+  label: import('@/enum').EnumThemeAnimateMode;
 }
 /** 多标签样式 */
 interface Tab {
@@ -52,9 +57,15 @@ interface Tab {
   /** 多页签风格 */
   mode: EnumType.ThemeTabMode;
   /** 多页签风格列表 */
-  // modeList: ThemeTabModeList[];
+  modeList: ThemeTabModeList[];
   /** 开启多页签缓存 */
   isCache: boolean;
+}
+
+/** 多页签风格列表 */
+interface ThemeTabModeList {
+  value: EnumType.ThemeTabMode;
+  label: import('@/enum').EnumThemeTabMode;
 }
 
 interface OtherColor {
@@ -116,7 +127,13 @@ interface Menu {
   /** 水平模式的菜单的位置 */
   horizontalPosition: EnumType.ThemeHorizontalMenuPosition;
   /** 水平模式的菜单的位置列表 */
-  // horizontalPositionList: HorizontalMenuPositionList[];
+  horizontalPositionList: HorizontalMenuPositionList[];
+}
+
+/**  水平模式的菜单的位置列表 */
+interface HorizontalMenuPositionList {
+  value: EnumType.ThemeHorizontalMenuPosition;
+  label: import('@/enum').EnumThemeHorizontalMenuPosition;
 }
 
 /** 布局样式 */

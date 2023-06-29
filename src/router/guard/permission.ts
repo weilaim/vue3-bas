@@ -37,12 +37,12 @@ export async function createPermissionGuardRoute(
       }
     ],
     // 不需要登录权限的页面直接通行
-    [
-      !needLogin,
-      () => {
-        next();
-      }
-    ],
+    // [
+    //   !needLogin,
+    //   () => {
+    //     next();
+    //   }
+    // ],
     // 未登录状态进入需要登录权限的页面
     [
       !isLogin && needLogin,
