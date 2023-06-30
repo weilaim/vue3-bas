@@ -27,6 +27,8 @@ export async function createDynamicGuard(
         const redirect = to.fullPath;
         next({ name: routeName('login'), query: { redirect } });
       }
+
+      return false;
     }
 
     await route.initAuthRoute();
@@ -41,10 +43,8 @@ export async function createDynamicGuard(
     }
   }
 
-
   /** 权限路由已经加载，仍然未找到，重定向到not-found */
   if (to.name === routeName('not-found-page') && to.name === routeName('login')) {
-
     next({ name: routeName('not-found'), replace: true });
     return false;
   }

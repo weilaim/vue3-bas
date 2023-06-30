@@ -30,6 +30,7 @@ specifiers:
   cz-customizable: ^7.0.0
   dayjs: ^1.11.5
   dotenv: ^10.0.0
+  echarts: ^5.4.0
   eslint: ^8.25.0
   eslint-config-soybeanjs-vue: ^0.1.0
   husky: ^8.0.1
@@ -63,7 +64,7 @@ specifiers:
 
 dependencies:
   '@better-scroll/core': 2.5.1
-  '@pureadmin/utils': 1.8.7_vue@3.2.41
+  '@pureadmin/utils': 1.8.7_echarts@5.4.2+vue@3.2.41
   '@soybeanjs/vue-admin-layout': 1.2.1_vue@3.2.41
   '@soybeanjs/vue-admin-tab': 1.0.9_vue@3.2.41
   '@vueuse/core': 8.9.4_vue@3.2.41
@@ -71,6 +72,7 @@ dependencies:
   clipboard: 2.0.11
   crypto-js: 4.1.1
   dayjs: 1.11.5
+  echarts: 5.4.2
   lodash-es: 4.17.21
   naive-ui: 2.33.4_vue@3.2.41
   pinia: 2.0.23_l7r24p6nevbtlimqmqcwa3ouhu
@@ -1883,7 +1885,7 @@ packages:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
 
-  /@pureadmin/utils/1.8.7_vue@3.2.41:
+  /@pureadmin/utils/1.8.7_echarts@5.4.2+vue@3.2.41:
     resolution: {integrity: sha512-4I8SMrjy1zXsYJyI02bObNgrpLYhfFrIJi9AMSeaqKMqL3qwe2/7+rfrWgzEgb8bvua6m40Whvt91p4jrlyu2Q==}
     peerDependencies:
       echarts: '*'
@@ -1894,6 +1896,7 @@ packages:
       vue:
         optional: true
     dependencies:
+      echarts: 5.4.2
       vue: 3.2.41
     dev: false
 
@@ -4024,6 +4027,13 @@ packages:
   /duplexer/0.1.2:
     resolution: {integrity: sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==}
     dev: true
+
+  /echarts/5.4.2:
+    resolution: {integrity: sha512-2W3vw3oI2tWJdyAz+b8DuWS0nfXtSDqlDmqgin/lfzbkB01cuMEN66KWBlmur3YMp5nEDEEt5s23pllnAzB4EA==}
+    dependencies:
+      tslib: 2.3.0
+      zrender: 5.4.3
+    dev: false
 
   /editor/1.0.0:
     resolution: {integrity: sha512-SoRmbGStwNYHgKfjOrX2L0mUvp9bUVv0uPppZSOMAntEbcFtoC3MKF5b3T6HQPXKIV+QGY3xPO3JK5it5lVkuw==}
@@ -8451,6 +8461,10 @@ packages:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
     dev: true
 
+  /tslib/2.3.0:
+    resolution: {integrity: sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==}
+    dev: false
+
   /tslib/2.4.0:
     resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
     dev: true
@@ -9536,3 +9550,9 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  /zrender/5.4.3:
+    resolution: {integrity: sha512-DRUM4ZLnoaT0PBVvGBDO9oWIDBKFdAVieNWxWwK0niYzJCMwGchRk21/hsE+RKkIveH3XHCyvXcJDkgLVvfizQ==}
+    dependencies:
+      tslib: 2.3.0
+    dev: false
