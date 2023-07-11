@@ -1,3 +1,6 @@
+/**
+ * 用户性别
+ */
 export const genderLabels: Record<UserManagement.GenderKey, string> = {
   0: '女',
   1: '男'
