@@ -4,7 +4,7 @@ import { EnumLoginModule } from '@/enum';
 import { useThemeStore } from '@/store';
 import { useAppInfo } from '@/composables';
 import { getColorPalette, mixColor } from '@/utils';
-import { LoginBg, PwdLogin, Register, ResetPwd,CodeLogin } from './components';
+import { LoginBg, PwdLogin, Register, ResetPwd, CodeLogin } from './components';
 
 interface Props {
   /** 登录模块 */

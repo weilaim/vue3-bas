@@ -7,9 +7,6 @@ declare namespace ApiAuth {
   /** 返回的用户信息 */
   type UserInfo = Auth.UserInfo;
 
-  interface ResUserInfo {
-    user: Auth.UserInfo;
-  }
   interface CpatCha {
     /** 验证码 */
     captchaLength: number;

@@ -28,7 +28,7 @@ export const useAuthStore = defineStore('auth-store', {
       return this.userInfo.headerImg || '';
     },
     name(): string {
-      return this.userInfo.userName || 'weilaim';
+      return this.userInfo.nickName || 'weilaim';
     }
   },
   actions: {
@@ -75,11 +75,10 @@ export const useAuthStore = defineStore('auth-store', {
 
         // 跳转登录后的地址
         toLoginRedirect();
-
         // 登录后弹出欢迎提示
         window.$notification?.success({
           title: '欢迎回来',
-          content: `欢迎回来,${this.userInfo.userName}`,
+          content: `欢迎回来,${this.userInfo.nickName}`,
           duration: 3000
         });
         return;
@@ -97,6 +96,7 @@ export const useAuthStore = defineStore('auth-store', {
       let successFlag = false;
       // 先把token 存储到缓存中(后面接口请求头需要token)
       const { token, refreshToken } = backendToken;
+
       setToken(token);
       setRefreshToken(refreshToken);
 
@@ -104,10 +104,9 @@ export const useAuthStore = defineStore('auth-store', {
       const { data } = await fetchUserInfo();
       if (data) {
         // 登录成功后把用户信息存储到缓存中
-
-        setUserInfo(data.user);
+        setUserInfo(data);
         // 更新状态
-        this.userInfo = data.user;
+        this.userInfo = data;
         this.token = token;
         successFlag = true;
       }

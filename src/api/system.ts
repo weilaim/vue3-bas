@@ -8,7 +8,7 @@ import { request } from '@/utils';
  */
 
 export function fetchLogin(formData: Auth.LoginInfo) {
-  return request.post<ApiAuth.Token>('/base/login', formData);
+  return request.post<ApiAuth.Token>('/login', formData);
 }
 
 /**
@@ -16,7 +16,7 @@ export function fetchLogin(formData: Auth.LoginInfo) {
  * @returns
  */
 export function fetchUserInfo() {
-  return request.get<ApiAuth.ResUserInfo>('/user/getUserInfo');
+  return request.get<ApiAuth.UserInfo>('/user/info');
 }
 
 /**

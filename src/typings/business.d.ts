@@ -28,19 +28,16 @@ declare namespace Auth {
     sideMode?: string;
     uuid?: string;
     /** 用户名 */
-    userName: string;
     /** 用户角色类型 */
-    userRole: RoleTyep;
+    userRole?: RoleTyep;
     /** 头像 */
     headerImg?: string;
   }
 
   /** 登录信息 */
   interface LoginInfo {
-    user_name: string;
+    username: string;
     password: string;
-    captcha: string;
-    captchaId: string;
   }
 }
 

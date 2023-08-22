@@ -1,5 +1,5 @@
 import type { AxiosInstance, AxiosRequestConfig } from 'axios';
-import { getToken } from '@/utils';
+// import { getToken } from '@/utils';
 import CustomAxiosInstance from './instance';
 
 type RequestMethod = 'get' | 'post' | 'put' | 'delete';
@@ -23,8 +23,7 @@ export function createRequest(axiosConfig: AxiosRequestConfig, backendConfig?: S
     const method = param.method || 'get';
     const defConfig = {
       headers: {
-        'Content-Type': 'application/json',
-        'x-token': getToken()
+        'Content-Type': 'application/json'
       }
     };
     const { instance } = customInstance;

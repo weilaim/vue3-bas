@@ -4,37 +4,19 @@ import { EnumLoginModule } from '@/enum';
 import { useAuthStore } from '@/store';
 import { useRouterPush } from '@/composables';
 import { formRules } from '@/utils';
-import { fetchCaptCha } from '@/api';
 
 const auth = useAuthStore();
 const { login } = useAuthStore();
 const { toLoginModule } = useRouterPush();
 const formRef = ref<HTMLElement & FormInst>();
 const model = reactive({
-  user_name: 'admin',
-  password: '123456',
-  captcha: '',
-  captchaId: ''
+  username: 'admin',
+  password: '111111'
 });
 
 const rules: FormRules = {
-  password: formRules.pwd,
-  captcha: formRules.code
+  password: formRules.pwd
 };
-
-/** 验证码 */
-const captChaSrc = ref();
-const loginVerify = () => {
-  fetchCaptCha().then(async res => {
-    const { data } = res;
-    if (data) {
-      captChaSrc.value = data.picPath;
-      model.captchaId = data.captchaId;
-    }
-  });
-};
-
-loginVerify();
 
 /** 记住我 */
 const rememberMe = ref(false);
@@ -47,14 +29,10 @@ async function handleSubmit() {
 <template>
   <n-form ref="formRef" :model="model" :rules="rules" size="large" :show-label="false">
     <n-form-item path="user_name">
-      <n-input v-model:value="model.user_name" placeholder="用户名" />
+      <n-input v-model:value="model.username" placeholder="用户名" />
     </n-form-item>
     <n-form-item path="password">
       <n-input v-model:value="model.password" type="password" show-password-on="click" placeholder="请输入密码" />
-    </n-form-item>
-    <n-form-item class="flex mb-20" path="captcha">
-      <n-input v-model:value="model.captcha" placeholder="验证码" @keydown.enter="handleSubmit" />
-      <n-image preview-disabled class="bg-white h-40px ml-10px" :src="captChaSrc" @click="loginVerify()" />
     </n-form-item>
     <n-space :vertical="true" :size="24">
       <div class="flex-y-center justify-between">

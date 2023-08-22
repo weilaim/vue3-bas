@@ -110,6 +110,8 @@ export const useRouteStore = defineStore('route-store', {
      */
     async initDynamicRoute() {
       const { id } = getUserInfo();
+      console.log('id', id);
+
       const { data } = await getAsyncRoutes(id);
 
       if (data) {
